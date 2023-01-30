@@ -48,6 +48,16 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+        <PackageReference Include="ZXing.Net" Version="0.16.8" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)' == 'net7.0-android'">
+      <PackageReference Include="GoogleGson">
+        <Version>2.10.1.1</Version>
+      </PackageReference>
+      <PackageReference Include="Xamarin.Google.ZXing.Core">
+        <Version>3.5.1</Version>
+      </PackageReference>
     </ItemGroup>
 
 </Project>
