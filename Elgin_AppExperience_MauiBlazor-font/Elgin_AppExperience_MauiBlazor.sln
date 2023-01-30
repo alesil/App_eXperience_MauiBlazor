@@ -12,7 +12,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Aplicação", "01 - Aplicação", "{24C5B950-910C-430B-B996-6FD7351CFD6A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Bibliotecas AAR", "02 - Bibliotecas AAR", "{38004CBB-8AAC-45F5-BCFB-C3A0717D3C9B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Bibliotecas AAR", "03 - Bibliotecas AAR", "{38004CBB-8AAC-45F5-BCFB-C3A0717D3C9B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "e1_v02.16.00", "e1_v02.16.00", "{ABA2C0A7-0817-4D64-89DA-15C6B184FFF9}"
+	ProjectSection(SolutionItems) = preProject
+		Bibliotecas.aar\e1_v02.16.00\cloudpossdk-s-1.0.2.aar = Bibliotecas.aar\e1_v02.16.00\cloudpossdk-s-1.0.2.aar
+		Bibliotecas.aar\e1_v02.16.00\e1-V02.16.00-release.aar = Bibliotecas.aar\e1_v02.16.00\e1-V02.16.00-release.aar
+		Bibliotecas.aar\e1_v02.16.00\InterfaceAutomacao-v2.0.0.12.aar = Bibliotecas.aar\e1_v02.16.00\InterfaceAutomacao-v2.0.0.12.aar
+		Bibliotecas.aar\e1_v02.16.00\minipdvm8-v01.00.00-release.aar = Bibliotecas.aar\e1_v02.16.00\minipdvm8-v01.00.00-release.aar
+		Bibliotecas.aar\e1_v02.16.00\satelgin-8.0.1-release.aar = Bibliotecas.aar\e1_v02.16.00\satelgin-8.0.1-release.aar
+		Bibliotecas.aar\e1_v02.16.00\scanner-v1.1-release.aar = Bibliotecas.aar\e1_v02.16.00\scanner-v1.1-release.aar
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Projetos de vínculo AAR", "02 - Projetos de vínculo AAR", "{455679FA-C697-41A2-AC0C-1A1C325DC8F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +44,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D3C7A7BD-24F7-4D18-906E-0FFD2E161E48} = {24C5B950-910C-430B-B996-6FD7351CFD6A}
+		{ABA2C0A7-0817-4D64-89DA-15C6B184FFF9} = {38004CBB-8AAC-45F5-BCFB-C3A0717D3C9B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ACA3B52A-D5FA-41A0-AF31-F3097EA26AA4}
