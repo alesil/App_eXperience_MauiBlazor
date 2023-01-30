@@ -5,6 +5,15 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElginM10MauiBlazor", "ElginM10MauiBlazor\ElginM10MauiBlazor.csproj", "{D3C7A7BD-24F7-4D18-906E-0FFD2E161E48}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{8542DCBC-24F1-4ACE-807A-9886E5C9E70C}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Aplicação", "01 - Aplicação", "{24C5B950-910C-430B-B996-6FD7351CFD6A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Bibliotecas AAR", "02 - Bibliotecas AAR", "{38004CBB-8AAC-45F5-BCFB-C3A0717D3C9B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +29,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D3C7A7BD-24F7-4D18-906E-0FFD2E161E48} = {24C5B950-910C-430B-B996-6FD7351CFD6A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ACA3B52A-D5FA-41A0-AF31-F3097EA26AA4}
