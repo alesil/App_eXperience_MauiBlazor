@@ -16,7 +16,7 @@
         <ApplicationTitle>ElginM10MauiBlazor</ApplicationTitle>
 
         <!-- App Identifier -->
-        <ApplicationId>com.companyname.elginm10mauiblazor</ApplicationId>
+        <ApplicationId>br.com.elgindevelopercommunity.elginm10mauiblazor</ApplicationId>
         <ApplicationIdGuid>B4AF8565-97EE-4DD3-B67A-6BB57063448D</ApplicationIdGuid>
 
         <!-- Versions -->
