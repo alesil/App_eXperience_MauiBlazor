@@ -5,7 +5,7 @@ using ElginM10MauiBlazor.Services.External.Windows;
 namespace ElginM10MauiBlazor.Services;
 internal partial class PrinterService
 {
-        private partial void DoConstructor() { }
+    private partial void DoConstructor() { }
 
     public partial int PrinterInternalImpStart()
     {
@@ -110,7 +110,11 @@ internal partial class PrinterService
         result = E1Impressora.ImpressaoQRCode(text, size, nivelCorrecao);
         return result;
     }
-    public partial int ImprimeImagem(Stream bitmap) { throw new NotImplementedException(); }
+    public partial int ImprimeImagem(Stream bitmap)
+    {
+        throw new NotImplementedException();
+        //return E1Impressora.Imprime
+    }
     public partial int ImprimeImagemPadrao() { throw new NotImplementedException(); }
     public partial int ImprimeXMLNFCe(Dictionary<string, object> parametros)
     {

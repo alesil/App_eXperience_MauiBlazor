@@ -1,4 +1,6 @@
-﻿using Com.Elgin.E1.Impressora;
+﻿using Android.Graphics;
+
+using Com.Elgin.E1.Impressora;
 
 namespace ElginM10MauiBlazor.Services;
 internal partial class PrinterService
@@ -111,7 +113,19 @@ internal partial class PrinterService
         result = Termica.ImpressaoQRCode(text, size, nivelCorrecao);
         return result;
     }
-    public partial int ImprimeImagem(Stream bitmap) { throw new NotImplementedException(); }
+
+    public partial int ImprimeImagem(Stream bitmap)
+    {
+        int result;
+        Bitmap bmp = BitmapFactory.DecodeStream(bitmap);
+
+        result = isPrinterInternSelected
+            ? Termica.ImprimeBitmap(bmp)    // método para impressão com impressora interna
+            : Termica.ImprimeImagem(bmp);   // método para impressão externa
+
+        return result;
+    }
+
     public partial int ImprimeImagemPadrao() { throw new NotImplementedException(); }
     public partial int ImprimeXMLNFCe(Dictionary<string, object> parametros)
     {

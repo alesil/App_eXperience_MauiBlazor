@@ -6,9 +6,8 @@
     <EditForm Model="@_dados">
         <div class="row">
             <div class="row align-content-center justify-content-center" style="height: 11rem;">
-                <img src="images/elgin_logo_default_print_image.png" class="col-8" />
-                @*<div class="col-3 align-self-center fw-bold">MENSAGEM:</div>*@
-                @*<div class="col-9"><input id="mensagem" class="form-control" @bind-value="_dados.CutPaper" placeholder="Texto a ser impresso" /></div>*@
+                @*<img src="images/elgin_logo_default_print_image.png" class="col-8" />*@
+                <img src="@_dados.ImageUrl" class="col-8 image-preview" />
             </div>
 
             <div class="row mt-2">
@@ -24,7 +23,7 @@
             <div class="row ms-1">
                 <div class="row mt-4">
                     <div class="col row me-1">
-                        <button @onclick="Imprimir" class="btn-primary rounded-3">USAR IMAGEM PADRÃO</button>
+                        <button @onclick="CarregarImagemPadrao" class="btn-primary rounded-3">USAR IMAGEM PADRÃO</button>
                     </div>
                     <div class="col row ms-1">
                         <button @onclick="CarregarImagem" class="btn-primary rounded-3">CARREGAR IMAGEM</button>

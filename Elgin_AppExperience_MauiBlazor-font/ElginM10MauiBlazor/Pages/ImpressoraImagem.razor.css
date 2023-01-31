@@ -9,3 +9,11 @@
 .container-fluid {
     height: 20rem;
 }
+
+.image-preview {
+    height: 10rem;
+    object-fit: contain;
+    object-position: center;
+    border: 0;
+    border-style: none;
+}
