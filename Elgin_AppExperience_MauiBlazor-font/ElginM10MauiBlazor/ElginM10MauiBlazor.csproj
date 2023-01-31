@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
     <PropertyGroup>
-        <TargetFrameworks>net7.0-android</TargetFrameworks>
+        <TargetFrameworks>net7.0-android33.0</TargetFrameworks>
         <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
         <!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
         <!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
@@ -58,6 +58,15 @@
       <PackageReference Include="Xamarin.Google.ZXing.Core">
         <Version>3.5.1</Version>
       </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
+      <ProjectReference Include="..\Bindings.aar\CloudPosSdk\CloudPosSdk.csproj" />
+      <ProjectReference Include="..\Bindings.aar\E1\E1.csproj" />
+      <ProjectReference Include="..\Bindings.aar\InterfaceAutomacao\InterfaceAutomacao.csproj" />
+      <ProjectReference Include="..\Bindings.aar\MiniPdvM8\MiniPdvM8.csproj" />
+      <ProjectReference Include="..\Bindings.aar\SatElgin\SatElgin.csproj" />
+      <ProjectReference Include="..\Bindings.aar\Scanner\Scanner.csproj" />
     </ItemGroup>
 
 </Project>
