@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <title>ElginM10MauiBlazor</title>
+    <title>Elgin M10 - Maui+Blazor</title>
     <base href="/" />
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <link href="css/app.css" rel="stylesheet" />
@@ -14,16 +14,24 @@
 
     <div class="status-bar-safe-area"></div>
 
-    <div id="app">Loading...</div>
+    <div id="app">Carregando...</div>
 
     <div id="blazor-error-ui">
-        An unhandled error has occurred.
-        <a href="" class="reload">Reload</a>
+        Ocorreu um erro inesperado.
+        <a href="" class="reload">Recarregar</a>
         <a class="dismiss">🗙</a>
     </div>
 
     <script src="_framework/blazor.webview.js" autostart="false"></script>
 
+    <script>
+        window.mask = (id, mask) => {
+            var customMask = IMask(
+                document.getElementById(id), {
+                mask: mask
+            });
+        };
+    </script>
 </body>
 
 </html>
