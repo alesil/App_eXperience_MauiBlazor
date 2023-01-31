@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ElginM10MauiBlazor.Services;
-public partial class TesteService
+internal partial class TesteService
 {
-    public partial int GetNumero();
-    public partial string GetPlataforma();
+    internal partial int GetNumero();
+    internal partial string GetPlataforma();
 }
