@@ -1,0 +1,4 @@
+﻿<metadata>
+	<attr path="/api/package[@name='br.com.elgin.sat']" name="managedName">sat</attr>
+	<!--<attr path="/api/package[@name='br.com.elgin']/class[@name='SatInitializer']/method[@name='create'and count(parameter)=1 and parameter[1][@type='android.content.Context']]" name="managedReturn">Java.Lang.Object</attr>-->
+</metadata>
