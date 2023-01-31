@@ -1,90 +1,120 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
-    <PropertyGroup>
-        <TargetFrameworks>net7.0-android33.0</TargetFrameworks>
-        <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
-        <!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
-        <!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
-        <OutputType>Exe</OutputType>
-        <RootNamespace>ElginM10MauiBlazor</RootNamespace>
-        <UseMaui>true</UseMaui>
-        <SingleProject>true</SingleProject>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <EnableDefaultCssItems>false</EnableDefaultCssItems>
+	<PropertyGroup>
+		<TargetFrameworks>net7.0-android33.0</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.22621.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
+		<OutputType>Exe</OutputType>
+		<RootNamespace>ElginM10MauiBlazor</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<EnableDefaultCssItems>false</EnableDefaultCssItems>
 
-        <!-- Display name -->
-        <ApplicationTitle>ElginM10MauiBlazor</ApplicationTitle>
+		<!-- Display name -->
+		<ApplicationTitle>ElginM10MauiBlazor</ApplicationTitle>
 
-        <!-- App Identifier -->
-        <ApplicationId>br.com.elgindevelopercommunity.elginm10mauiblazor</ApplicationId>
-        <ApplicationIdGuid>B4AF8565-97EE-4DD3-B67A-6BB57063448D</ApplicationIdGuid>
+		<!-- App Identifier -->
+		<ApplicationId>br.com.elgindevelopercommunity.elginm10mauiblazor</ApplicationId>
+		<ApplicationIdGuid>B4AF8565-97EE-4DD3-B67A-6BB57063448D</ApplicationIdGuid>
 
-        <!-- Versions -->
-        <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-        <ApplicationVersion>1</ApplicationVersion>
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
 
-        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">24.0</SupportedOSPlatformVersion>
-        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
-        <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
-    </PropertyGroup>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">24.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.22621.0</TargetPlatformMinVersion>
+	</PropertyGroup>
 
-    <ItemGroup>
-        <!-- App Icon -->
-        <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 
-        <!-- Splash Screen -->
-        <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
 
-        <!-- Images -->
-        <MauiImage Include="Resources\Images\*" />
-        <MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
 
-        <!-- Custom Fonts -->
-        <MauiFont Include="Resources\Fonts\*" />
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
 
-        <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
-        <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
-    </ItemGroup>
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
 
-    <ItemGroup>
-      <None Remove="Resources\Raw\cancelamentosatgo.xml" />
-      <None Remove="Resources\Raw\satgo3.xml" />
-      <None Remove="Resources\Raw\xmlcancelarultimavendasat.xml" />
-      <None Remove="Resources\Raw\xmlenviadadosvendasat.xml" />
-      <None Remove="Resources\Raw\xmlnfce.xml" />
-      <None Remove="Resources\Raw\xmlsat.xml" />
-    </ItemGroup>
+	<ItemGroup>
+		<None Remove="Resources\Raw\cancelamentosatgo.xml" />
+		<None Remove="Resources\Raw\satgo3.xml" />
+		<None Remove="Resources\Raw\xmlcancelarultimavendasat.xml" />
+		<None Remove="Resources\Raw\xmlenviadadosvendasat.xml" />
+		<None Remove="Resources\Raw\xmlnfce.xml" />
+		<None Remove="Resources\Raw\xmlsat.xml" />
+	</ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
-        <PackageReference Include="ZXing.Net" Version="0.16.8" />
-    </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="ZXing.Net" Version="0.16.8" />
+	</ItemGroup>
 
-    <ItemGroup Condition="'$(TargetFramework)' == 'net7.0-android'">
-      <PackageReference Include="GoogleGson">
-        <Version>2.10.1.1</Version>
-      </PackageReference>
-      <PackageReference Include="Xamarin.Google.ZXing.Core">
-        <Version>3.5.1</Version>
-      </PackageReference>
-    </ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0-android'">
+		<PackageReference Include="GoogleGson">
+			<Version>2.10.1.1</Version>
+		</PackageReference>
+		<PackageReference Include="Xamarin.Google.ZXing.Core">
+			<Version>3.5.1</Version>
+		</PackageReference>
+	</ItemGroup>
 
-    <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
-      <ProjectReference Include="..\Bindings.aar\CloudPosSdk\CloudPosSdk.csproj" />
-      <ProjectReference Include="..\Bindings.aar\E1\E1.csproj" />
-      <ProjectReference Include="..\Bindings.aar\InterfaceAutomacao\InterfaceAutomacao.csproj" />
-      <ProjectReference Include="..\Bindings.aar\MiniPdvM8\MiniPdvM8.csproj" />
-      <ProjectReference Include="..\Bindings.aar\SatElgin\SatElgin.csproj" />
-      <ProjectReference Include="..\Bindings.aar\Scanner\Scanner.csproj" />
-    </ItemGroup>
+	<!-- ************************************************************************************************************************** -->
+	<!--                                       CONFIGURAÇÃO MULTI-PLATAFORMA                                                        -->
+	<!-- ************************************************************************************************************************** -->
+	
+	<!-- Referências de bibliotecas Android (normalmente projetos gerados a partir de bibliotecas .aar -->
 
-    <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">
-      <None Update="Platforms\Windows\Library\E1_Bridge01.dll">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="Platforms\Windows\Library\E1_Impressora01.dll">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-    </ItemGroup>
+	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
+		<ProjectReference Include="..\Bindings.aar\CloudPosSdk\CloudPosSdk.csproj" />
+		<ProjectReference Include="..\Bindings.aar\E1\E1.csproj" />
+		<ProjectReference Include="..\Bindings.aar\InterfaceAutomacao\InterfaceAutomacao.csproj" />
+		<ProjectReference Include="..\Bindings.aar\MiniPdvM8\MiniPdvM8.csproj" />
+		<ProjectReference Include="..\Bindings.aar\SatElgin\SatElgin.csproj" />
+		<ProjectReference Include="..\Bindings.aar\Scanner\Scanner.csproj" />
+	</ItemGroup>
+
+	<!-- Referências de DLLs Windows -->
+	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">
+		<None Update="Platforms\Windows\Library\E1_Bridge01.dll">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Platforms\Windows\Library\E1_Impressora01.dll">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<!-- ************************************************************************************************************************** -->
+	<!--                                       CONFIGURAÇÃO MULTI-PLATAFORMA                                                        -->
+	<!-- ************************************************************************************************************************** -->
+	<!-- São aceitos arquivos com a extensão intermediário no nome da plataforma ou abaixo da pasta com o nome da plataforma -->
+	<!-- Referência: https://learn.microsoft.com/pt-br/dotnet/maui/platform-integration/configure-multi-targeting?view=net-maui-7.0 -->
+	<!-- ************************************************************************************************************************** -->
+	
+	<!-- Android -->
+	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'android'">
+		<Compile Remove="**\**\*.Android.cs" />
+		<None Include="**\**\*.Android.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+		<Compile Remove="**\Android\**\*.cs" />
+		<None Include="**\Android\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+	</ItemGroup>
+
+	<!-- Windows -->
+	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'windows'">
+		<Compile Remove="**\*.Windows.cs" />
+		<None Include="**\*.Windows.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+		<Compile Remove="**\Windows\**\*.cs" />
+		<None Include="**\Windows\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+	</ItemGroup>
 
 </Project>
