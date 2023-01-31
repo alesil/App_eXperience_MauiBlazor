@@ -73,7 +73,7 @@ public partial class Impressora : ComponentBase
             case ETipoImpresora.Ethernet:
                 string[] ipAndPort = DadosImpressora.ImpressoraIp.Split(':');
                 HideSpinner();
-                string modeloImpressoraEth = await SelecionarModeloImpressoraUsb();
+                string modeloImpressoraEth = await SelecionarModeloImpressoraEth();
                 ShowSpinner("Conectando impressora...");
                 if (string.IsNullOrEmpty(modeloImpressoraEth))
                 {
