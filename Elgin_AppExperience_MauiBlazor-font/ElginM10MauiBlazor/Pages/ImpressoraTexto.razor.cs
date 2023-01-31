@@ -21,7 +21,7 @@ public partial class ImpressoraTexto : ComponentBase
     private async void ImprimirTexto()
     {
         await Parent.VerificarConexaoImpressora();
-        ShowSpinner("Imprimindo texo...");
+        ShowSpinner("Imprimindo texto...");
 
         var parametros = new Dictionary<string, string>();
 

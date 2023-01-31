@@ -1,1 +1,79 @@
-﻿<h1>IMPRESSÃO DE CÓDIGO DE BARRAS</h1>
+﻿@inject Services.PrinterService PrinterService
+
+<h5 class="mx-0 mt-1 mb-2 fw-bold text-center">IMPRESSÃO DE CÓDIGO DE BARRAS</h5>
+
+<div class="container-fluid px-3">
+    <EditForm EditContext="EditContext">
+        <div class="row">
+            <div class="row">
+                <div class="col-2 align-self-center fw-bold">CÓDIGO:</div>
+                <div class="col-10"><input id="mensagem" class="form-control" @bind-value="_dados.BarCodeText" placeholder="Código de barras a ser impresso" /></div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-6 align-self-center fw-bold">TIPO DE CÓDIGO DE BARRAS:</div>
+                <div class="col-6">
+                    <InputSelect @bind-Value="_dados.BarCodeType" class="form-select lista">
+                        @foreach (var item in barCodeOptions)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </InputSelect>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <InputRadioGroup TValue="EAlinhamento" @bind-Value="_dados.Alinhamento">
+                    <div class="align-self-center fw-bold">ALINHAMENTO:</div>
+                    <div class="btn-group alinhamento" role="group">
+                        <InputRadio Value="EAlinhamento.Esquerda" class="btn-check" id="btn-esquerda" />
+                        <label class="btn btn-outline-primary p-1" for="btn-esquerda">ESQUERDA</label>
+
+                        <InputRadio Value="EAlinhamento.Centralizado" class="btn-check" id="btn-centralizado" />
+                        <label class="btn btn-outline-primary p-1" for="btn-centralizado">CENTRALIZADO</label>
+
+                        <InputRadio Value="EAlinhamento.Direita" class="btn-check" id="btn-direita" />
+                        <label class="btn btn-outline-primary p-1" for="btn-direita">DIREITA</label>
+                    </div>
+                </InputRadioGroup>
+            </div>
+
+            <div class="row mt-2">
+                <div class="align-self-center fw-bold">ESTILIZAÇÃO:</div>
+            </div>
+            <div class="row estilizacao">
+                <div class="col-2 align-self-center fw-bold">HEIGTH:</div>
+                <div class="col-3">
+                    <InputSelect @bind-Value="_dados.BarCodeHeight" class="form-select lista" disabled="@_dados.BarCodeType.Equals("QR CODE")">
+                        @foreach (var item in heigthOptions)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </InputSelect>
+                </div>
+                <div class="col-2"></div>
+                <div class="col-2 align-self-center fw-bold">WIDTH:</div>
+                <div class="col-3">
+                    <InputSelect @bind-Value="_dados.BarCodeWidth" class="form-select lista">
+                        @foreach (var item in widthOptions)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </InputSelect>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="d-flex justify-content-between opcionais">
+                    <div class="form-check form-switch mt-1">
+                        <input class="form-check-input" type="checkbox" @bind-value="_dados.CutPaper" id="cutpaper">
+                        <label class="form-check-labe fw-bold" for="cutpaper">CUT PAPER</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row ms-1">
+                <div class="row mt-4">
+                    <button @onclick="ImprimirCodigoBarras" class="btn-primary rounded-3">IMPRIMIR CÓDIGO DE BARRAS</button>
+                </div>
+            </div>
+
+        </div>
+    </EditForm>
+</div>
