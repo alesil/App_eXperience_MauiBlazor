@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Aplicação", "01 - Aplicação", "{24C5B950-910C-430B-B996-6FD7351CFD6A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Bibliotecas AAR", "03 - Bibliotecas AAR", "{38004CBB-8AAC-45F5-BCFB-C3A0717D3C9B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Bibliotecas AAR (android)", "03 - Bibliotecas AAR (android)", "{38004CBB-8AAC-45F5-BCFB-C3A0717D3C9B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "e1_v02.16.00", "e1_v02.16.00", "{ABA2C0A7-0817-4D64-89DA-15C6B184FFF9}"
 	ProjectSection(SolutionItems) = preProject
@@ -24,7 +24,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "e1_v02.16.00", "e1_v02.16.0
 		Bibliotecas.aar\e1_v02.16.00\scanner-v1.1-release.aar = Bibliotecas.aar\e1_v02.16.00\scanner-v1.1-release.aar
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Bindings AAR", "02 - Bindings AAR", "{455679FA-C697-41A2-AC0C-1A1C325DC8F4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Bindings AAR (android)", "02 - Bindings AAR (android)", "{455679FA-C697-41A2-AC0C-1A1C325DC8F4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E1", "Bindings.aar\E1\E1.csproj", "{1A62D071-39DA-4E37-9E7D-404A5E41503B}"
 EndProject
@@ -37,6 +37,56 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatElgin", "Bindings.aar\SatElgin\SatElgin.csproj", "{532FD95D-E818-4A86-8265-F060036A940E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudPosSdk", "Bindings.aar\CloudPosSdk\CloudPosSdk.csproj", "{65DC0C25-BBE1-4901-951D-A8C14692F7FE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Bibliotecas DLL (windows)", "04 - Bibliotecas DLL (windows)", "{124075FF-71C9-4C56-93CD-602A1A3151B2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "E1_Bridge_v01.00.01", "E1_Bridge_v01.00.01", "{1DEEEDB3-32C7-48F1-A7A9-9DDE9F7F8313}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "E1_Etiqueta_v01.00.01", "E1_Etiqueta_v01.00.01", "{97EE675A-0BF6-4801-A250-111AB0F4375C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "E1_Impressora_v01.05.06", "E1_Impressora_v01.05.06", "{FA27BEE5-40D8-44AA-9FC7-7A23ECEB1A60}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "E1_Tef_v01.06.00", "E1_Tef_v01.06.00", "{DB64A446-23BC-4860-94D6-0C06F975DDCA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x86", "x86", "{AAC652E3-EA4B-4A1D-93B6-36A615D15BD6}"
+	ProjectSection(SolutionItems) = preProject
+		Bibliotecas.dll\E1_Bridge_v01.00.01\x86\E1_Bridge01.dll = Bibliotecas.dll\E1_Bridge_v01.00.01\x86\E1_Bridge01.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x86", "x86", "{042FBC47-7AE1-46D7-B11D-9A46CBB9D9AC}"
+	ProjectSection(SolutionItems) = preProject
+		Bibliotecas.dll\E1_Etiqueta_v01.00.01\x86\E1_Etiqueta01.dll = Bibliotecas.dll\E1_Etiqueta_v01.00.01\x86\E1_Etiqueta01.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x86", "x86", "{D40C2695-28F0-4293-8EB0-36AC6589E412}"
+	ProjectSection(SolutionItems) = preProject
+		Bibliotecas.dll\E1_Impressora_v01.05.06\x86\E1_Impressora01.dll = Bibliotecas.dll\E1_Impressora_v01.05.06\x86\E1_Impressora01.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x86", "x86", "{974B4874-92F2-4D8A-9D7B-91F10B01E068}"
+	ProjectSection(SolutionItems) = preProject
+		Bibliotecas.dll\E1_Tef_v01.06.00\x86\E1_Tef01.dll = Bibliotecas.dll\E1_Tef_v01.06.00\x86\E1_Tef01.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x64", "x64", "{0B33C47F-2120-4D2E-AD24-F9DC462E7CD1}"
+	ProjectSection(SolutionItems) = preProject
+		Bibliotecas.dll\E1_Bridge_v01.00.01\x64\E1_Bridge01.dll = Bibliotecas.dll\E1_Bridge_v01.00.01\x64\E1_Bridge01.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x64", "x64", "{AB109AA4-0F67-41FE-989C-593FDA16122D}"
+	ProjectSection(SolutionItems) = preProject
+		Bibliotecas.dll\E1_Etiqueta_v01.00.01\x64\E1_Etiqueta01.dll = Bibliotecas.dll\E1_Etiqueta_v01.00.01\x64\E1_Etiqueta01.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x64", "x64", "{A6623389-5C7A-45CA-8335-D018546A737C}"
+	ProjectSection(SolutionItems) = preProject
+		Bibliotecas.dll\E1_Impressora_v01.05.06\x64\E1_Impressora01.dll = Bibliotecas.dll\E1_Impressora_v01.05.06\x64\E1_Impressora01.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x64", "x64", "{198742E8-2372-4F24-AC66-41A56CC442C7}"
+	ProjectSection(SolutionItems) = preProject
+		Bibliotecas.dll\E1_Tef_v01.06.00\x64\E1_Tef01.dll = Bibliotecas.dll\E1_Tef_v01.06.00\x64\E1_Tef01.dll
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +137,18 @@ Global
 		{9B65FAF6-9BB7-4E3D-B6CB-DB78639627CC} = {455679FA-C697-41A2-AC0C-1A1C325DC8F4}
 		{532FD95D-E818-4A86-8265-F060036A940E} = {455679FA-C697-41A2-AC0C-1A1C325DC8F4}
 		{65DC0C25-BBE1-4901-951D-A8C14692F7FE} = {455679FA-C697-41A2-AC0C-1A1C325DC8F4}
+		{1DEEEDB3-32C7-48F1-A7A9-9DDE9F7F8313} = {124075FF-71C9-4C56-93CD-602A1A3151B2}
+		{97EE675A-0BF6-4801-A250-111AB0F4375C} = {124075FF-71C9-4C56-93CD-602A1A3151B2}
+		{FA27BEE5-40D8-44AA-9FC7-7A23ECEB1A60} = {124075FF-71C9-4C56-93CD-602A1A3151B2}
+		{DB64A446-23BC-4860-94D6-0C06F975DDCA} = {124075FF-71C9-4C56-93CD-602A1A3151B2}
+		{AAC652E3-EA4B-4A1D-93B6-36A615D15BD6} = {1DEEEDB3-32C7-48F1-A7A9-9DDE9F7F8313}
+		{042FBC47-7AE1-46D7-B11D-9A46CBB9D9AC} = {97EE675A-0BF6-4801-A250-111AB0F4375C}
+		{D40C2695-28F0-4293-8EB0-36AC6589E412} = {FA27BEE5-40D8-44AA-9FC7-7A23ECEB1A60}
+		{974B4874-92F2-4D8A-9D7B-91F10B01E068} = {DB64A446-23BC-4860-94D6-0C06F975DDCA}
+		{0B33C47F-2120-4D2E-AD24-F9DC462E7CD1} = {1DEEEDB3-32C7-48F1-A7A9-9DDE9F7F8313}
+		{AB109AA4-0F67-41FE-989C-593FDA16122D} = {97EE675A-0BF6-4801-A250-111AB0F4375C}
+		{A6623389-5C7A-45CA-8335-D018546A737C} = {FA27BEE5-40D8-44AA-9FC7-7A23ECEB1A60}
+		{198742E8-2372-4F24-AC66-41A56CC442C7} = {DB64A446-23BC-4860-94D6-0C06F975DDCA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ACA3B52A-D5FA-41A0-AF31-F3097EA26AA4}
