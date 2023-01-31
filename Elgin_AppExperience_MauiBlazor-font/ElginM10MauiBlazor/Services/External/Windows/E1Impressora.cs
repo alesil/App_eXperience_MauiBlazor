@@ -1,10 +1,9 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace ElginM10MauiBlazor.Platforms.Windows.ExternalServices;
-
-internal partial class E1ImpressoraWin
+namespace ElginM10MauiBlazor.Services.External.Windows;
+internal class E1Impressora
 {
-    public const string DLL = @"Platforms\Windows\Library\E1_Impressora01.dll";
+       public const string DLL = @"Platforms\Windows\Library\E1_Impressora01.dll";
 
     /// <summary>
     /// Abre conexão com a impressora.
@@ -95,6 +94,4 @@ internal partial class E1ImpressoraWin
     
     [DllImport(DLL, CallingConvention = CallingConvention.StdCall)]
     internal static extern int ImpressaoQRCode(string dados, int tamanho, int nivelCorrecao);
-
 }
-
