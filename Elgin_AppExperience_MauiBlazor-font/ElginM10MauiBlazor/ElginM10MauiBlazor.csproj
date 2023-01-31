@@ -47,6 +47,15 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Remove="Resources\Raw\cancelamentosatgo.xml" />
+      <None Remove="Resources\Raw\satgo3.xml" />
+      <None Remove="Resources\Raw\xmlcancelarultimavendasat.xml" />
+      <None Remove="Resources\Raw\xmlenviadadosvendasat.xml" />
+      <None Remove="Resources\Raw\xmlnfce.xml" />
+      <None Remove="Resources\Raw\xmlsat.xml" />
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
         <PackageReference Include="ZXing.Net" Version="0.16.8" />
     </ItemGroup>
