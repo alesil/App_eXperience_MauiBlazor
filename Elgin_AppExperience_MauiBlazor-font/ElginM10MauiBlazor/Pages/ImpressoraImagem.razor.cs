@@ -15,7 +15,7 @@ public partial class ImpressoraImagem : ComponentBase
 
     private async Task CarregarImagem()
     {
-
+        
     }
 
     private class Dados
