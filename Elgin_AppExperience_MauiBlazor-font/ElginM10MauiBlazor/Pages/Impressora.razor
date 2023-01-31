@@ -47,13 +47,15 @@
         <div class="col-9">
             <div class="col impressora">
                 <EditForm Model="@DadosImpressora">
-                    <div class="row" >
+                    <div class="row">
                         <div class="col-8">
                             <InputRadioGroup TValue="ETipoImpresora" @bind-Value="DadosImpressora.TipoImpresora">
                                 <div class="btn-group tipo-impressora" role="group">
-                                    <InputRadio Value="ETipoImpresora.Interna" class="btn-check" id="btn-interna" />
-                                    <label class="btn btn-outline-danger p-1" for="btn-interna">IMP. INTERNA</label>
-
+                                    @if (DeviceInfo.Current.Platform == DevicePlatform.Android)
+                                    {
+                                        <InputRadio Value="ETipoImpresora.Interna" class="btn-check" id="btn-interna" />
+                                        <label class="btn btn-outline-danger p-1" for="btn-interna">IMP. INTERNA</label>
+                                    }
                                     <InputRadio Value="ETipoImpresora.Usb" class="btn-check" id="btn-usb" />
                                     <label class="btn btn-outline-primary p-1" for="btn-usb">IMP. EXT. USB </label>
 

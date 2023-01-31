@@ -161,7 +161,7 @@ public partial class Impressora : ComponentBase
 
     public class Dados
     {
-        public ETipoImpresora TipoImpresora { get; set; } = ETipoImpresora.Interna;
+        public ETipoImpresora TipoImpresora { get; set; } = DeviceInfo.Current.Platform == DevicePlatform.Android ? ETipoImpresora.Interna : ETipoImpresora.Usb;
         public string ImpressoraIp { get; set; } = "192.168.2.160:9100";
     }
 
