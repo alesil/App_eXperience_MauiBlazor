@@ -139,7 +139,7 @@ internal partial class PrinterService
 
         return ret;
     }
-    public partial int ImprimeImagemPadrao() { throw new NotImplementedException(); }
+
     public partial int ImprimeXMLNFCe(Dictionary<string, object> parametros)
     {
         string xml = (string)parametros["xmlNFCe"];
