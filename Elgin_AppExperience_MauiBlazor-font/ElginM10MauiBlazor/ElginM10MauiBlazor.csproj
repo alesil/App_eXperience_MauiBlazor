@@ -74,7 +74,6 @@
 	<!-- ************************************************************************************************************************** -->
 	
 	<!-- Referências de bibliotecas Android (normalmente projetos gerados a partir de bibliotecas .aar -->
-
 	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
 		<ProjectReference Include="..\Bindings.aar\CloudPosSdk\CloudPosSdk.csproj" />
 		<ProjectReference Include="..\Bindings.aar\E1\E1.csproj" />
@@ -83,7 +82,7 @@
 		<ProjectReference Include="..\Bindings.aar\SatElgin\SatElgin.csproj" />
 		<ProjectReference Include="..\Bindings.aar\Scanner\Scanner.csproj" />
 	</ItemGroup>
-
+	
 	<!-- Referências de DLLs Windows -->
 	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">
 		<None Update="Platforms\Windows\Library\E1_Bridge01.dll">
