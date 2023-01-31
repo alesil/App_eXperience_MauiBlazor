@@ -94,4 +94,7 @@ internal class E1Impressora
     
     [DllImport(DLL, CallingConvention = CallingConvention.StdCall)]
     internal static extern int ImpressaoQRCode(string dados, int tamanho, int nivelCorrecao);
+
+    [DllImport(DLL, CallingConvention = CallingConvention.StdCall)]
+    internal static extern int ImprimeImagem(string dados);
 }

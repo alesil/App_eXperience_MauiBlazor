@@ -24,8 +24,9 @@ public partial class ImpressoraImagem : ComponentBase
         await Parent.VerificarConexaoImpressora();
         ShowSpinner("Imprimindo Imagem...");
 
+        // foi passado a extensão da imagem para conseguir imprimir no ambiente windows, para android não é necessário.
         _dados.ImageStream.Position = 0;
-        var ret = await PrinterService.ImprimeImagemAsync(_dados.ImageStream);
+        var ret = await PrinterService.ImprimeImagemAsync(_dados.ImageStream, _dados.ImageFileExtension);
 
         await PrinterService.JumpLineAsync();
         await PrinterService.JumpLineAsync();
@@ -60,6 +61,7 @@ public partial class ImpressoraImagem : ComponentBase
                 byte[] byteArray = _dados.ImageStream.ToArray();
                 var b64String = Convert.ToBase64String(byteArray);
                 _dados.ImageUrl = $"data:image;base64,{b64String}";
+                _dados.ImageFileExtension = ".png";
             }
         }
         catch (Exception ex)
@@ -93,6 +95,8 @@ public partial class ImpressoraImagem : ComponentBase
                     byte[] byteArray = _dados.ImageStream.ToArray();
                     var b64String = Convert.ToBase64String(byteArray);
                     _dados.ImageUrl = $"data:{photo.ContentType};base64,{b64String}";
+                    FileInfo fi = new(photo.FileName);
+                    _dados.ImageFileExtension = fi.Extension;
                 }
             }
         }
@@ -106,6 +110,7 @@ public partial class ImpressoraImagem : ComponentBase
     {
         public bool CutPaper { get; set; } = false;
         public string ImageUrl { get; set; } = string.Empty;
+        public string ImageFileExtension { get; set; } = string.Empty;
         public MemoryStream ImageStream { get; set; } = new();
     }
 }

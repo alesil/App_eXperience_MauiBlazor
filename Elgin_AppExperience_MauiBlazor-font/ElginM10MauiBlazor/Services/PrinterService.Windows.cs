@@ -2,6 +2,8 @@
 
 using ElginM10MauiBlazor.Services.External.Windows;
 
+using System.Drawing;
+
 namespace ElginM10MauiBlazor.Services;
 internal partial class PrinterService
 {
@@ -110,10 +112,32 @@ internal partial class PrinterService
         result = E1Impressora.ImpressaoQRCode(text, size, nivelCorrecao);
         return result;
     }
-    public partial int ImprimeImagem(Stream bitmap)
+    public partial int ImprimeImagem(Stream bitmapStream, string fileExtension)
     {
-        throw new NotImplementedException();
-        //return E1Impressora.Imprime
+        // A função da de impressão de imagem da elgin utiliza arquivo em disco, por isso foi armazenado em uma pasta local e em seguida excluído.
+        // Lembrando que a função também faz uso da extensão do arquivo para conseguir imprimir, se passar a extensão incorreta é retornado um erro -9999
+        int ret;
+        try
+        {
+            string fileName = Path.Combine(FileSystem.Current.AppDataDirectory, $"{Guid.NewGuid()}{fileExtension}");
+
+            // grava o arquivo temporário da imagem
+            using FileStream outputStream = File.OpenWrite(fileName);
+
+            bitmapStream.CopyTo(outputStream);
+            outputStream.Close();
+
+            ret = E1Impressora.ImprimeImagem(fileName);
+
+            File.Delete(fileName);
+
+        }
+        catch
+        {
+            ret = -987654321;
+        }
+
+        return ret;
     }
     public partial int ImprimeImagemPadrao() { throw new NotImplementedException(); }
     public partial int ImprimeXMLNFCe(Dictionary<string, object> parametros)

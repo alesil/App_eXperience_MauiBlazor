@@ -114,10 +114,10 @@ internal partial class PrinterService
         return result;
     }
 
-    public partial int ImprimeImagem(Stream bitmap)
+    public partial int ImprimeImagem(Stream bitmapStream, string fileExtension)
     {
         int result;
-        Bitmap bmp = BitmapFactory.DecodeStream(bitmap);
+        Bitmap bmp = BitmapFactory.DecodeStream(bitmapStream);
 
         result = isPrinterInternSelected
             ? Termica.ImprimeBitmap(bmp)    // método para impressão com impressora interna

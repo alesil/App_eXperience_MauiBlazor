@@ -20,7 +20,7 @@ internal partial class PrinterService
     public partial int CutPaper(int cut);
     public partial int ImprimeBarCode(Dictionary<string, string> dictionary);
     public partial int ImprimeQR_CODE(Dictionary<string, string> dictionary);
-    public partial int ImprimeImagem(Stream bitmap);
+    public partial int ImprimeImagem(Stream bitmapStream, string fileExtension);
     public partial int ImprimeImagemPadrao();
     public partial int ImprimeXMLNFCe(Dictionary<string, object> parametros);
     public partial int ImprimeXMLSAT(Dictionary<string, object> parametros);
@@ -67,8 +67,8 @@ internal partial class PrinterService
         => await Task.Run(() => ImprimeBarCode(dictionary));
     public async Task<int> ImprimeQR_CODEAsync(Dictionary<string, string> dictionary)
         => await Task.Run(() => ImprimeQR_CODE(dictionary));
-    public async Task<int> ImprimeImagemAsync(Stream bitmap)
-        => await Task.Run(() => ImprimeImagem(bitmap));
+    public async Task<int> ImprimeImagemAsync(Stream bitmapStream, string fileExtension)
+        => await Task.Run(() => ImprimeImagem(bitmapStream, fileExtension));
     public async Task<int> ImprimeImagemPadraoAsync()
         => await Task.Run(() => ImprimeImagemPadrao());
     public async Task<int> ImprimeXMLNFCeAsync(Dictionary<string, object> parametros)
