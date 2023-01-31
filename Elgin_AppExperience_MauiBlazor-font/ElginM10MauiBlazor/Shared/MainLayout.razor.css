@@ -1,75 +1,54 @@
 .page {
-    position: relative;
     display: flex;
     flex-direction: column;
+    height: 100%;
+    min-height: 100%;
 }
 
-main {
-    flex: 1;
-}
-
-.sidebar {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
-}
-
-.top-row {
-    background-color: #f7f7f7;
-    border-bottom: 1px solid #d6d5d5;
-    justify-content: flex-end;
-    height: 3.5rem;
-    display: flex;
-    align-items: center;
-}
-
-    .top-row ::deep a, .top-row ::deep .btn-link {
-        white-space: nowrap;
-        margin-left: 1.5rem;
-        text-decoration: none;
+    .page .content {
+        flex: 1;
+        overflow: auto;
+        height: calc(100vh - 2rem);
     }
 
-    .top-row ::deep a:hover, .top-row ::deep .btn-link:hover {
-        text-decoration: underline;
-    }
-
-    .top-row ::deep a:first-child {
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-@media (max-width: 640.98px) {
-    .top-row:not(.auth) {
-        display: none;
-    }
-
-    .top-row.auth {
-        justify-content: space-between;
-    }
-
-    .top-row ::deep a, .top-row ::deep .btn-link {
-        margin-left: 0;
-    }
-}
-
-@media (min-width: 641px) {
-    .page {
+    .page .footer {
+        display: flex;
         flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        height: 2rem;
     }
 
-    .sidebar {
-        width: 250px;
+        .page .footer > .minilogo-elgin {
+            flex: 0;
+            height: 1.75rem;
+            margin-left: 1rem;
+        }
+
+        .page .footer > .label-plataforma {
+            flex: 0 0 auto;
+            margin-right: 1rem;
+            align-content: center;
+            font-size: small;
+            color: gray;
+            text-transform: lowercase;
+        }
+
+        .page .footer > .label-dotnet-maui {
+            flex: 0 0 auto;
+            margin-right: 1rem;
+            align-content: end;
+            font-size: small;
+            color: gray;
+        }
+
+@media (max-height: 500px) {
+    .page .content {
         height: 100vh;
-        position: sticky;
-        top: 0;
     }
 
-    .top-row {
-        position: sticky;
-        top: 0;
-        z-index: 1;
-    }
-
-    .top-row, article {
-        padding-left: 2rem !important;
-        padding-right: 1.5rem !important;
+    .page .footer {
+        visibility: hidden;
     }
 }

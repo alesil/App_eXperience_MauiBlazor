@@ -1,0 +1,170 @@
+﻿.seletor {
+    order: 0;
+    flex: 1 0 auto;
+    align-self: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+    .seletor a:hover > .botao,
+    .seletor a:hover > .botao-status,
+    .seletor a:hover > .botao-abrir-gaveta {
+        border-color: red;
+    }
+
+    .seletor a > .botao.active {
+        border-color: blue;
+    }
+
+        .seletor a > .botao.active .btn-text {
+            color: blue;
+        }
+
+    .seletor a:link, .seletor a:visited, .seletor a:active {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .seletor a > .botao {
+        flex: 0 0 auto;
+        width: 11.5rem;
+        height: 6rem;
+        margin: 0 .1rem 0.3rem .1rem;
+        padding: .2rem;
+        border: 0.15rem;
+        border-radius: 1rem;
+        border-style: solid;
+        border-color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+    }
+
+        .seletor a > .botao .btn-image {
+            width: 90%;
+            height: 60%;
+            object-fit: contain;
+            flex: 0 1 auto;
+        }
+
+        .seletor a > .botao .btn-text {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            font-size: small;
+            font-weight: bold;
+            cursor: pointer;
+            max-height: 40%;
+        }
+
+    .seletor a > .botao-status {
+        flex: 0 0 auto;
+        width: 11.5rem;
+        height: 2rem;
+        margin: 0 .1rem 0.3rem .1rem;
+        padding: .5rem;
+        border: 0.15rem;
+        border-radius: .5rem;
+        border-style: solid;
+        border-color: black;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        align-content: center;
+    }
+
+        .seletor a > .botao-status .btn-image {
+            width: 2rem;
+            height: 1.2rem;
+            object-fit: contain;
+            flex: 0 1 auto;
+        }
+
+        .seletor a > .botao-status .btn-text {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            font-size: x-small;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+    .seletor a > .botao-abrir-gaveta {
+        flex: 0 0 auto;
+        width: 11.5rem;
+        height: 2rem;
+        margin: 0 .1rem 0.3rem .1rem;
+        padding: .5rem;
+        border: 0.15rem;
+        border-radius: .5rem;
+        border-style: solid;
+        border-color: black;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        align-content: center;
+        background-color: cornflowerblue;
+    }
+
+        .seletor a > .botao-abrir-gaveta .btn-text {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            font-size: small;
+            font-weight: bold;
+            cursor: pointer;
+            color: white;
+        }
+
+.impressora {
+    height: 2.5rem;
+}
+
+    .impressora .tipo-impressora {
+        align-content: space-between;
+        width: 23rem;
+    }
+
+        .impressora .tipo-impressora > label {
+            font-size: small;
+            font-weight: bold;
+        }
+
+    .impressora .txt-ip {
+        font-size: small;
+        padding: 0;
+    }
+
+        .impressora .txt-ip #ip {
+            font-size: small;
+            /*padding: 0;*/
+            height: 1.8rem;
+        }
+
+
+.conteudo {
+    /*background-color: cornflowerblue;*/
+    border: 0.15rem;
+    border-radius: .5rem;
+    border-style: solid;
+    border-color: black;
+    height: 23rem;
+}

@@ -1,0 +1,127 @@
+﻿@page "/e1bridge"
+@inject Services.E1BridgeService E1BridgeService
+
+<Spinner Mensagem="Aguardando Retorno do Terminal..." Visible="_showSpinner" />
+
+<h2 class="mx-3 mt-1 mb-2 fw-bold">E1 - BRIDGE</h2>
+
+<EditForm Model="@_dados">
+    <div class="container-fluid px-3">
+        <div class="col">
+
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div class="col-5 align-self-center fw-bold">IP:</div>
+                        <div class="col"><input id="ip" class="form-control" @bind-value="_dados.Ip" inputmode="numeric" placeholder="127.0.0.1" /></div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col-7 mx-0 pe-0 align-self-center fw-bold">PORTAS TRANS./STATUS:</div>
+                        <div class="col-2 mx-2 px-0"><input id="transacoes" class="form-control" inputmode="numeric" @bind-value="_dados.PortaTransacao" placeholder="3000" /></div>
+                        <div class="col-2 mx-1 px-0"><input id="slide" class="form-control" inputmode="numeric" @bind-value="_dados.PortaStatus" placeholder="3001" /></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-1">
+                <div class="col">
+                    <div class="row">
+                        <div class="col-5 align-self-center fw-bold">VALOR:</div>
+                        <div class="col"><input id="valor" class="form-control" type="number" @bind-value="_dados.Valor" inputmode="decimal" placeholder="200" /></div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col-12 align-self-center fw-bold">
+                            <div class="form-check form-switch mt-1">
+                                <input class="form-check-input" type="checkbox" @bind-value="_dados.EnviarSenha" id="usar-senha">
+                                <label class="form-check-label" for="usar-senha">ENVIAR SENHA NAS TRANSAÇÕES</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-1">
+                <div class="col">
+                    <div class="row" style="@(_dados.FormaPagamento != EFormaPagamento.Credito || _dados.TipoParcelamento == ETipoParcelamento.AVista ? "visibility: hidden;" : string.Empty)">
+                        <div class="col-5 align-self-center fw-bold">N° PARCELAS:</div>
+                        <div class="col text-end"><input id="parcelas" class="form-control" disabled="@(_dados.FormaPagamento != EFormaPagamento.Credito || _dados.TipoParcelamento == ETipoParcelamento.AVista)" type="number" @bind-value="_dados.Parcelas" inputmode="numeric" placeholder="1" /></div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col-5 align-self-center fw-bold">SENHA:</div>
+                        <div class="col"><input id="senha" class="form-control" disabled="@(!_dados.EnviarSenha)" @bind-value="_dados.Senha" /></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PARTE DE BAIXO-->
+
+            <div class="row mt-2">
+                <!-- ESQUERDA -->
+                <div class="col">
+                    <div class="row">
+                        <InputRadioGroup TValue="EFormaPagamento" @bind-Value="_dados.FormaPagamento">
+                            <div class="align-self-center fw-bold">FORMAS DE PAGAMENTO:</div>
+                            <div class="btn-group forma-pagamento" role="group">
+                                <InputRadio Value="EFormaPagamento.Credito" class="btn-check" id="btn-credito" />
+                                <label class="btn btn-outline-primary p-1" for="btn-credito">CRÉDITO</label>
+
+                                <InputRadio Value="EFormaPagamento.Debito" class="btn-check" id="btn-debito" />
+                                <label class="btn btn-outline-success p-1" for="btn-debito">DÉBITO</label>
+                            </div>
+                        </InputRadioGroup>
+                    </div>
+                    <div class="row" style="@(_dados.FormaPagamento != EFormaPagamento.Credito ? "visibility: hidden;" : string.Empty)">
+                        <InputRadioGroup TValue="ETipoParcelamento" @bind-Value="_dados.TipoParcelamento">
+                            <div class="align-self-center fw-bold">TIPO DE PARCELAMENTO:</div>
+                            <div class="btn-group tipo-parcelamento" role="group">
+                                <InputRadio Value="ETipoParcelamento.Loja" class="btn-check" id="btn-loja" />
+                                <label class="btn btn-outline-danger p-1" for="btn-loja">LOJA</label>
+
+                                <InputRadio Value="ETipoParcelamento.Administradora" class="btn-check" id="btn-administradora" />
+                                <label class="btn btn-outline-primary p-1" for="btn-administradora">ADM</label>
+
+                                <InputRadio Value="ETipoParcelamento.AVista" class="btn-check" id="btn-avista" />
+                                <label class="btn btn-outline-success p-1" for="btn-avista">A VISTA</label>
+                            </div>
+                        </InputRadioGroup>
+                    </div>
+                    <!-- BOTÕES -->
+                    <div class="row mt-4">
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-success btn-sm" @onclick="EnviarTransacao">ENVIAR TRANSAÇÃO</button>
+                            <button type="button" class="btn btn-danger btn-sm" @onclick="CancelarTransacao">CANCELAR TRANSAÇÃO</button>
+                            <button type="button" class="btn btn-primary btn-sm" @onclick="OperacaoAdministrativa">OPERAÇÃO ADM</button>
+                            <button type="button" class="btn btn-primary btn-sm" @onclick="ImprimirCupomTeste">IMPRIMIR CUPOM TESTE</button>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- DIREITA -->
+                <div class="col">
+                    <div class="row id-pdv">
+                        <div class="align-self-center fw-bold">IDENTIFICADOR DO PDV:</div>
+                        <div class="col"><input id="id-pdv" class="form-control" @bind-value="_dados.Pdv" type="text" placeholder="Nome do PDV" /></div>
+                    </div>
+
+                    <div class="row funcoes">
+                        <div class="align-self-center fw-bold">FUNÇÕES E1-BRIDGE:</div>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-primary btn-sm" @onclick="ConsultarStatusTerminal">CONSULTAR STATUS DO TERMINAL</button>
+                        <button type="button" class="btn btn-primary btn-sm" @onclick="ConsultarTimeout">CONSULTAR TIMEOUT CONFIGURADO</button>
+                        <button type="button" class="btn btn-primary btn-sm" @onclick="ConsultarUltimaTransacao">CONSULTAR ÚLTIMA TRANSAÇÃO</button>
+                        <button type="button" class="btn btn-outline-danger btn-sm" @onclick="ConfigurarSenhaTerminal">CONFIGURAR SENHA DO TERMINAL</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm"@onclick="ConfigurarTimeoutTransacoes">CONFIGURAR TIMEOUT PARA TRANSAÇÕES</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</EditForm>

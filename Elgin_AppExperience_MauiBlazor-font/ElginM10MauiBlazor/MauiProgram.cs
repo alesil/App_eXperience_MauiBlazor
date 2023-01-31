@@ -1,6 +1,4 @@
-﻿using ElginM10MauiBlazor.Data;
-
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 
 namespace ElginM10MauiBlazor;
 public static class MauiProgram
@@ -24,8 +22,6 @@ public static class MauiProgram
         builder.Services.AddSingleton<Services.IDialogService, Services.DialogService>();
         builder.Services.AddSingleton<Services.E1BridgeService>();
 		builder.Services.AddSingleton<Services.PrinterService>();
-
-        builder.Services.AddSingleton<WeatherForecastService>();
 
         return builder.Build();
     }

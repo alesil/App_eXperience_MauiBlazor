@@ -1,17 +1,16 @@
 ﻿@inherits LayoutComponentBase
 
 <div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
-
     <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+        <div class="content">
+            @Body
         </div>
 
-        <article class="content px-4">
-            @Body
-        </article>
+        <div class="footer">
+            <img class="minilogo-elgin" src="images/bannerElginSmall.png" />
+            <label class="label-plataforma">@DeviceInfo.Platform</label>
+            <label class="label-dotnet-maui">.NET MAUI + BLAZOR</label>
+        </div>
     </main>
 </div>
+

@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 namespace ElginM10MauiBlazor.Services.External;
 internal class E1Bridge
 {
-    public const string DLL = @"Platforms\Windows\Library\E1_Bridge01_x64.dll";
+    public const string DLL = @"Platforms\Windows\Library\E1_Bridge01.dll";
 
     #region Retorno Direto
 

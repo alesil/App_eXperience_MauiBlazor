@@ -1,0 +1,51 @@
+﻿.spinner-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #808080c0;
+    z-index: 8888;
+}
+
+.spinner-text {
+    position: absolute;
+    top: 60vh;
+    left: 0;
+    width: 100%;
+    color: #000082;
+    z-index: 9999;
+    /*background-color: yellow;*/
+    text-align: center;
+}
+    .spinner-text > span {
+        background-color: #ccccccc0;
+        font-size: xx-large;
+        font-weight: bold;
+        border:solid;
+        border-radius: 20px;
+        padding: 0.2em 0.5em;
+    }
+
+.spinner {
+    border: 16px solid #00008230;
+    border-top: 16px solid #000082ff;
+    border-radius: 50%;
+    width: 140px;
+    height: 140px;
+    animation: spin 1000ms linear infinite;
+    top: 20vh;
+    left: calc(50vw - 70px);
+    position: absolute;
+    z-index: 9999;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}

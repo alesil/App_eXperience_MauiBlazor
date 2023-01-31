@@ -1,0 +1,80 @@
+﻿@inject Services.PrinterService PrinterService
+
+<h5 class="mx-0 mt-1 mb-2 fw-bold text-center">IMPRESSÃO DE TEXTO</h5>
+<div class="container-fluid px-3">
+    <EditForm Model="@_dados">
+
+        <div class="row">
+            <div class="row">
+                <div class="col-3 align-self-center fw-bold">MENSAGEM:</div>
+                <div class="col-9"><input id="mensagem" class="form-control" @bind-value="_dados.Mensagem" placeholder="Texto a ser impresso" /></div>
+            </div>
+            <div class="row mt-2">
+                <InputRadioGroup TValue="EAlinhamento" @bind-Value="_dados.Alinhamento">
+                    <div class="align-self-center fw-bold">ALINHAMENTO:</div>
+                    <div class="btn-group alinhamento" role="group">
+                        <InputRadio Value="EAlinhamento.Esquerda" class="btn-check" id="btn-esquerda" />
+                        <label class="btn btn-outline-primary p-1" for="btn-esquerda">ESQUERDA</label>
+
+                        <InputRadio Value="EAlinhamento.Centralizado" class="btn-check" id="btn-centralizado" />
+                        <label class="btn btn-outline-primary p-1" for="btn-centralizado">CENTRALIZADO</label>
+
+                        <InputRadio Value="EAlinhamento.Direita" class="btn-check" id="btn-direita" />
+                        <label class="btn btn-outline-primary p-1" for="btn-direita">DIREITA</label>
+                    </div>
+                </InputRadioGroup>
+            </div>
+            <div class="row mt-2">
+                <div class="align-self-center fw-bold">ESTILIZAÇÃO:</div>
+            </div>
+            <div class="row estilizacao">
+                <div class="col-3 align-self-center fw-bold label">FONT FAMILY:</div>
+                <div class="col-3">
+                    <InputSelect @bind-Value="_dados.FontFamily" class="form-select lista">
+                        <option value="FONT A">FONT A</option>
+                        <option value="FONT B">FONT B</option>
+                    </InputSelect>
+                </div>
+                <div class="col-3 align-self-center fw-bold label">FONT SIZE:</div>
+                <div class="col-3">
+                    <InputSelect @bind-Value="_dados.FontSize" class="form-select lista">
+                        <option value="17">17</option>
+                        <option value="34">34</option>
+                        <option value="51">61</option>
+                        <option value="68">68</option>
+                    </InputSelect>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="d-flex justify-content-between opcionais">
+                    <div class="form-check form-switch mt-1">
+                        <input class="form-check-input" type="checkbox" @bind-value="_dados.Negrito" id="negrito">
+                        <label class="form-check-label fw-bold" for="negrito">NEGRITO</label>
+                    </div>
+                    <div class="form-check form-switch mt-1">
+                        <input class="form-check-input" type="checkbox" @bind-value="_dados.Sublinhado" id="sublinhado">
+                        <label class="form-check-label fw-bold" for="sublinhado">SUBLINHADO</label>
+                    </div>
+                    <div class="form-check form-switch mt-1">
+                        <input class="form-check-input" type="checkbox" @bind-value="_dados.CutPaper" id="cutpaper">
+                        <label class="form-check-labe fw-bold" for="cutpaper">CUT PAPER</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row ms-1">
+                <div class="row mt-4">
+                    <button @onclick="ImprimirTexto" class="btn-primary rounded-3">IMPRIMIR TEXTO</button>
+                </div>
+                <div class="row mt-2">
+                    <div class="col row me-1">
+                        <button @onclick="ImprimirNfce" class="btn-primary rounded-3">IMPRIMIR NFCe</button>
+                    </div>
+                    <div class="col row ms-1">
+                        <button @onclick="ImprimirSat" class="btn-primary rounded-3">IMPRIMIR SAT</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </EditForm>
+</div>

@@ -1,0 +1,90 @@
+﻿@page "/impressora"
+@inject Services.PrinterService PrinterService
+
+<Spinner Mensagem="@_messageSpinner" Visible="_showSpinner" />
+
+<h2 class="mx-3 mt-1 mb-2 fw-bold">IMPRESSORA</h2>
+
+<div class="container-fluid px-3">
+    <div class="row">
+        <div class="col-3 seletor">
+            <a @onclick="ClickImpressoraTexto">
+                <div class="botao @(_paginaImpressora == EPaginaImpressora.ImpressoraTexto ? "active" : string.Empty)">
+                    <img class="btn-image" src="images/printerText.jpg" />
+                    <label class="btn-text">IMPRESSÃO DE TEXTO</label>
+                </div>
+            </a>
+            <a @onclick="ClickImpressoraBarcode">
+                <div class="botao @(_paginaImpressora == EPaginaImpressora.ImpressoraBarcode ? "active" : string.Empty)">
+                    <img class="btn-image" src="images/printerBarCode.jpg" />
+                    <label class="btn-text">IMPRESSÃO DE <br />CÓDIGO DE BARRAS</label>
+                </div>
+            </a>
+            <a @onclick="ClickImpressoraImagem">
+                <div class="botao @(_paginaImpressora == EPaginaImpressora.ImpressoraImagem ? "active" : string.Empty)">
+                    <img class="btn-image" src="images/printerImage.jpg" />
+                    <label class="btn-text">IMPRESSÃO DE IMAGEM</label>
+                </div>
+            </a>
+            <a @onclick="VerificarStatusGaveta">
+                <div class="botao-status">
+                    <img class="btn-image" src="images/status.png" />
+                    <label class="btn-text">STATUS DA GAVETA</label>
+                </div>
+            </a>
+            <a @onclick="VerificarStatusImpressora">
+                <div class="botao-status">
+                    <img class="btn-image" src="images/status.png" />
+                    <label class="btn-text">STATUS DA IMPRESSORA</label>
+                </div>
+            </a>
+            <a @onclick="AbrirGaveta">
+                <div class="botao-abrir-gaveta">
+                    <label class="btn-text">ABRIR GAVETA</label>
+                </div>
+            </a>
+        </div>
+        <div class="col-9">
+            <div class="col impressora">
+                <EditForm Model="@DadosImpressora">
+                    <div class="row" >
+                        <div class="col-8">
+                            <InputRadioGroup TValue="ETipoImpresora" @bind-Value="DadosImpressora.TipoImpresora">
+                                <div class="btn-group tipo-impressora" role="group">
+                                    <InputRadio Value="ETipoImpresora.Interna" class="btn-check" id="btn-interna" />
+                                    <label class="btn btn-outline-danger p-1" for="btn-interna">IMP. INTERNA</label>
+
+                                    <InputRadio Value="ETipoImpresora.Usb" class="btn-check" id="btn-usb" />
+                                    <label class="btn btn-outline-primary p-1" for="btn-usb">IMP. EXT. USB </label>
+
+                                    <InputRadio Value="ETipoImpresora.Ethernet" class="btn-check" id="btn-ethernet" />
+                                    <label class="btn btn-outline-success p-1" for="btn-ethernet">IMP. ETHERNET</label>
+                                </div>
+                            </InputRadioGroup>
+                        </div>
+                        <div class="col-4 row txt-ip" style="@(DadosImpressora.TipoImpresora != ETipoImpresora.Ethernet ? "visibility: hidden;" : string.Empty)">
+                            <div class="col-2 align-self-center fw-bold">IP:</div>
+                            <div class="col-10"><input id="ip" class="form-control" @bind-value="DadosImpressora.ImpressoraIp" inputmode="numeric" placeholder="127.0.0.1" /></div>
+                        </div>
+                    </div>
+                </EditForm>
+            </div>
+            <div class="row conteudo">
+                <CascadingValue Value="this">
+                    @switch (_paginaImpressora)
+                    {
+                        case EPaginaImpressora.ImpressoraTexto:
+                            <ImpressoraTexto />
+                            break;
+                        case EPaginaImpressora.ImpressoraBarcode:
+                            <ImpressoraBarcode />
+                            break;
+                        case EPaginaImpressora.ImpressoraImagem:
+                            <ImpressoraImagem />
+                            break;
+                    }
+                </CascadingValue>
+            </div>
+        </div>
+    </div>
+</div>

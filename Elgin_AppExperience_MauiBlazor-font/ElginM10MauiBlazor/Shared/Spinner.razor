@@ -1,0 +1,14 @@
+﻿@if (Visible)
+{
+    <div class="spinner-background">
+        <div class="spinner"></div>
+        <div class="spinner-text">
+            <span>@Mensagem</span>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public string Mensagem { get; set; } = "Aguarde...";
+    [Parameter] public bool Visible { get; set; } = false;
+}

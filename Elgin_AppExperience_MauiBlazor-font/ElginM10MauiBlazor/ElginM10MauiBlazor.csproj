@@ -115,5 +115,13 @@
 		<Compile Remove="**\Windows\**\*.cs" />
 		<None Include="**\Windows\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Data\" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0-android33.0'">
+	  <PackageReference Include="Xamarin.Google.ZXing.Core">
+	    <Version>3.5.1</Version>
+	  </PackageReference>
+	</ItemGroup>
 
 </Project>

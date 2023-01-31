@@ -1,0 +1,16 @@
+﻿input {
+    line-height: 1rem;
+}
+
+    input#ip {
+        text-align: center;
+    }
+
+    input#valor,
+    input#parcelas {
+        text-align: right;
+    }
+
+.row.funcoes {
+    margin-top: 1.3rem;
+}
