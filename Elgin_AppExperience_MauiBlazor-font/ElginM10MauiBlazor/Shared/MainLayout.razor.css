@@ -5,6 +5,18 @@
     min-height: 100%;
 }
 
+    .page .home-button {
+        position: fixed;
+        bottom: .1rem;
+        left: .3rem;
+    }
+
+    .page .kiosk-button {
+        position: fixed;
+        bottom: .1rem;
+        right: .3rem;
+    }
+
     .page .content {
         flex: 1;
         overflow: auto;
@@ -23,7 +35,7 @@
         .page .footer > .minilogo-elgin {
             flex: 0;
             height: 1.75rem;
-            margin-left: 1rem;
+            margin-left: 4rem;
         }
 
         .page .footer > .label-plataforma {
@@ -37,10 +49,11 @@
 
         .page .footer > .label-dotnet-maui {
             flex: 0 0 auto;
-            margin-right: 1rem;
+            margin-right: 4rem;
             align-content: end;
             font-size: small;
             color: gray;
+
         }
 
 @media (max-height: 500px) {

@@ -1,7 +1,14 @@
 ﻿@inherits LayoutComponentBase
+@inject Services.KioskService KioskService
 
 <div class="page">
     <main>
+        <div class="home-button">
+            <a href="/">
+                <i class="fa-solid fa-home fa-2x" style="color: darkslategrey;"></i>
+            </a>
+        </div>
+
         <div class="content">
             @Body
         </div>
@@ -11,6 +18,19 @@
             <label class="label-plataforma">@DeviceInfo.Platform</label>
             <label class="label-dotnet-maui">.NET MAUI + BLAZOR</label>
         </div>
+        @if (DeviceInfo.Current.Platform == DevicePlatform.Android)
+        {
+            <div class="kiosk-button" @onclick="ToggleKioskMode">
+                @if (KioskMode)
+                {
+                    <i class="fa-solid fa-lock fa-2x fa-beat" style="--fa-animation-duration: 0.5s;--fa-animation-iteration-count: 4; color: darkgreen;"></i>
+                }
+                else
+                {
+                    <i class="fa-solid fa-lock-open fa-2x fa-shake" style="--fa-animation-duration: 0.5s;--fa-animation-iteration-count: 4;color: maroon;"></i>
+                }
+            </div>
+        }
     </main>
 </div>
 
