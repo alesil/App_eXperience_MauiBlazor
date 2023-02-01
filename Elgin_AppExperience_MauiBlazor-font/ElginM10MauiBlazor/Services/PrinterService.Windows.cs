@@ -1,8 +1,4 @@
-﻿
-
-using ElginM10MauiBlazor.Services.External.Windows;
-
-using System.Drawing;
+﻿using ElginM10MauiBlazor.Services.External.Windows;
 
 namespace ElginM10MauiBlazor.Services;
 internal partial class PrinterService

@@ -1,10 +1,23 @@
 ﻿@page "/"
+@inject Services.KioskService KioskService
 
 <div class="principal">
     <div class="header">
         <img class="logo-elgin" src="images/bannerElginSmall.png" />
     </div>
-
+    @if (DeviceInfo.Current.Platform == DevicePlatform.Android)
+    {
+        <div class="kiosk" @onclick="ToggleKioskMode">
+            @if (KioskMode)
+            {
+                <i class="fa-solid fa-lock fa-2x" data-fa-transform="shrink-8 right-6" style="color: darkgreen;"></i>
+            }
+            else
+            {
+                <i class="fa-solid fa-lock-open fa-2x fa-shake" data-fa-transform="shrink-8 right-6" style="--fa-animation-iteration-count: 2;color: maroon;"></i>
+            }
+        </div>
+    }
     <div class="seletor">
         <a href="/e1bridge">
             <div class="botao">

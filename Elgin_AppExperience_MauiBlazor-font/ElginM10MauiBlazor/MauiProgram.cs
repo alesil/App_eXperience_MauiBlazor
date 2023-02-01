@@ -22,6 +22,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<Services.IDialogService, Services.DialogService>();
         builder.Services.AddSingleton<Services.E1BridgeService>();
 		builder.Services.AddSingleton<Services.PrinterService>();
+		builder.Services.AddSingleton<Services.KioskService>();
 
         return builder.Build();
     }

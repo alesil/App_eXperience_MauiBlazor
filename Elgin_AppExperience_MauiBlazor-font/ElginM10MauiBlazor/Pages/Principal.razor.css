@@ -9,6 +9,16 @@
     align-items: stretch;
 }
 
+    .principal .kiosk {
+        position: fixed;
+        top: .5rem;
+        right: 1rem;
+    }
+
+        .principal .kiosk > p {
+            font-size: xx-small;
+        }
+
     .principal .header {
         padding: 1rem 0 0.5rem 0;
         order: 0;
