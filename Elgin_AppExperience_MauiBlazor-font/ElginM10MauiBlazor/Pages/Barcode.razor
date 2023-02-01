@@ -1,3 +1,118 @@
 ﻿@page "/barcode"
 
-<h1>Código de Barras</h1>
+<Spinner Mensagem="@_messageSpinner" Visible="_showSpinner" />
+
+<h2 class="mx-3 mt-1 mb-2 fw-bold">CÓDIGO DE BARRAS</h2>
+
+<div class="container-fluid px-3">
+    <div class="row">
+        <div class="col-9 painel-leitura">
+            <EditForm Model="@_dados">
+
+                <div class="row campo-leitura">
+                    <i class="col-1 fa fa-barcode fa-2x fa-fade"></i>
+                    <div class="col-10"><InputText @ref="_codigo01" @onkeypress="OnKeyPressCodigo01" @bind-Value="_dados.Codigo01" class="form-control" placeholder="Passe o leitor de código de barras"></InputText></div>
+                    @if (!string.IsNullOrEmpty(_dados.Codigo01))
+                    {
+                        <i class="col-1 fa fa-square-check fa-2x"></i>
+                    }
+                </div>
+
+                <div class="row campo-leitura">
+                    <i class="col-1 fa fa-barcode fa-2x fa-fade"></i>
+                    <div class="col-10"><InputText @ref="_codigo02" @onkeypress="OnKeyPressCodigo02" @bind-Value="_dados.Codigo02" class="form-control" placeholder="Passe o leitor de código de barras"></InputText></div>
+                    @if (!string.IsNullOrEmpty(_dados.Codigo02))
+                    {
+                        <i class="col-1 fa fa-square-check fa-2x"></i>
+                    }
+                </div>
+
+                <div class="row campo-leitura">
+                    <i class="col-1 fa fa-barcode fa-2x fa-fade"></i>
+                    <div class="col-10"><InputText @ref="_codigo03" @onkeypress="OnKeyPressCodigo03" @bind-Value="_dados.Codigo03" class="form-control" placeholder="Passe o leitor de código de barras"></InputText></div>
+                    @if (!string.IsNullOrEmpty(_dados.Codigo03))
+                    {
+                        <i class="col-1 fa fa-square-check fa-2x"></i>
+                    }
+                </div>
+
+                <div class="row campo-leitura">
+                    <i class="col-1 fa fa-barcode fa-2x fa-fade"></i>
+                    <div class="col-10"><InputText @ref="_codigo04" @onkeypress="OnKeyPressCodigo04" @bind-Value="_dados.Codigo04" class="form-control" placeholder="Passe o leitor de código de barras"></InputText></div>
+                    @if (!string.IsNullOrEmpty(_dados.Codigo04))
+                    {
+                        <i class="col-1 fa fa-square-check fa-2x"></i>
+                    }
+                </div>
+
+                <div class="row campo-leitura">
+                    <i class="col-1 fa fa-barcode fa-2x fa-fade"></i>
+                    <div class="col-10"><InputText @ref="_codigo05" @onkeypress="OnKeyPressCodigo05" @bind-Value="_dados.Codigo05" class="form-control" placeholder="Passe o leitor de código de barras"></InputText></div>
+                    @if (!string.IsNullOrEmpty(_dados.Codigo05))
+                    {
+                        <i class="col-1 fa fa-square-check fa-2x"></i>
+                    }
+                </div>
+
+                <div class="row campo-leitura">
+                    <i class="col-1 fa fa-barcode fa-2x fa-fade"></i>
+                    <div class="col-10"><InputText @ref="_codigo06" @onkeypress="OnKeyPressCodigo06" @bind-Value="_dados.Codigo06" class="form-control" placeholder="Passe o leitor de código de barras"></InputText></div>
+                    @if (!string.IsNullOrEmpty(_dados.Codigo06))
+                    {
+                        <i class="col-1 fa fa-square-check fa-2x"></i>
+                    }
+                </div>
+
+                <div class="row campo-leitura">
+                    <i class="col-1 fa fa-barcode fa-2x fa-fade"></i>
+                    <div class="col-10"><InputText @ref="_codigo07" @onkeypress="OnKeyPressCodigo07" @bind-Value="_dados.Codigo07" class="form-control" placeholder="Passe o leitor de código de barras"></InputText></div>
+                    @if (!string.IsNullOrEmpty(_dados.Codigo07))
+                    {
+                        <i class="col-1 fa fa-square-check fa-2x"></i>
+                    }
+                </div>
+
+                <div class="row campo-leitura">
+                    <i class="col-1 fa fa-barcode fa-2x fa-fade"></i>
+                    <div class="col-10"><InputText @ref="_codigo08" @onkeypress="OnKeyPressCodigo08" @bind-Value="_dados.Codigo08" class="form-control" placeholder="Passe o leitor de código de barras"></InputText></div>
+                    @if (!string.IsNullOrEmpty(_dados.Codigo08))
+                    {
+                        <i class="col-1 fa fa-square-check fa-2x"></i>
+                    }
+                </div>
+
+
+                @for (int i = 0; i < 0; i++)
+                {
+                    <div class="row campo-leitura">
+                        @*<div class="col-1 align-self-center fw-bold">MENSAGEM:</div>*@
+                        @*<i class="col-1 fa-qrcode fa-lock fa-2x" style="--fa-animation-duration: 0.5s;--fa-animation-iteration-count: 4; color: darkgreen;"></i>*@
+                        <i class="col-1 fa fa-barcode fa-2x fa-fade fa-beat-fade"></i>
+                        @*<div class="col-10"><input id="mensagem" class="form-control" placeholder="Código de barras ou QR-Code" /></div>*@
+                        <div class="col-10">
+                            @*<input id="mensagem" class="form-control" placeholder="Código de barras ou QR-Code" />*@
+                            <InputText id="input-i" @bind-Value="_dados.Codigo01" class="form-control" placeholder="Passe o leitor de código de barras"></InputText>
+                        </div>
+                        <i class="col-1 fa fa-square-check fa-2x"></i>
+                    </div>
+                }
+            </EditForm>
+        </div>
+        <div class="col-3 painel-exemplos">
+            <label class="row">QR-CODE</label>
+            <img class="row" src="images/QRCodeGithubElgin.png" />
+            <label class="row">EAN 13</label>
+            <img class="row" src="images/RediCodeEan13.png" />
+        </div>
+    </div>
+    <div class="row col-9 ms-1">
+        <div class="row mt-2">
+            <div class="col row me-1">
+                <button @onclick="IniciarLeitura" class="btn-primary rounded-3">INICIAR LEITURA</button>
+            </div>
+            <div class="col row ms-1">
+                <button @onclick="LimparCampos" class="btn-primary rounded-3">LIMPAR CAMPOS</button>
+            </div>
+        </div>
+    </div>
+</div>

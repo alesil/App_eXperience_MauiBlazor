@@ -1,0 +1,38 @@
+﻿.painel-leitura {
+    padding: .5rem;
+    border: 0.15rem;
+    border-radius: 1rem;
+    border-style: solid;
+    border-color: black;
+}
+
+    .painel-leitura .campo-leitura {
+        margin: 0;
+        margin-bottom: .3rem;
+    }
+
+        .painel-leitura .campo-leitura:not(:focus-within) {
+            color: transparent;
+        }
+
+        .painel-leitura .campo-leitura .fa-square-check {
+            padding: .1rem 0 0 0;
+            color: darkgreen;
+        }
+
+.painel-exemplos {
+    justify-content: center;
+}
+
+    .painel-exemplos > label {
+        justify-content: center;
+        font-weight: bold;
+    }
+
+    .painel-exemplos > img {
+        display: block;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1.5rem;
+    }
