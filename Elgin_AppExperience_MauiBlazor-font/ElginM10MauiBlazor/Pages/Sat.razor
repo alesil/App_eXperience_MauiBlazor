@@ -9,7 +9,13 @@
         <div class="col-6 painel-retorno p-1">
             <div class="align-self-center fw-bold">RETORNO DO SAT</div>
             <div class="retorno-sat">
-                <code>@_dados.RetornoSat</code>
+                <code class="retorno-conteudo">@_dados.RetornoSat</code>
+                @if (!string.IsNullOrWhiteSpace(_dados.RetornoSat))
+                {
+                    <br />
+                    <br />
+                    <span><b>Resultado obtido em: </b>@DateTime.Now</span>
+                }
             </div>
         </div>
         <div class="col-6 painel-comandos">
@@ -33,7 +39,7 @@
 
                 <div class="row mt-5 mx-0">
                     <div class="col row me-1">
-                        <button @onclick="Cmd" class="btn-primary rounded-3">CONSULTAR SAT</button>
+                        <button @onclick="ConsultarSat" class="btn-primary rounded-3">CONSULTAR SAT</button>
                     </div>
                     <div class="col row ms-1">
                         <button @onclick="Cmd" class="btn-primary rounded-3">CANCELAMENTO</button>
@@ -42,10 +48,10 @@
 
                 <div class="row mt-4 mx-0">
                     <div class="col row me-1">
-                        <button @onclick="Cmd" class="btn-primary rounded-3">STATUS OPER.</button>
+                        <button @onclick="ConsultarStatusOperacional" class="btn-primary rounded-3">STATUS OPER.</button>
                     </div>
                     <div class="col row ms-1">
-                        <button @onclick="Cmd" class="btn-primary rounded-3">ATIVAR</button>
+                        <button @onclick="AtivarSat" class="btn-primary rounded-3">ATIVAR</button>
                     </div>
                 </div>
 
@@ -54,13 +60,13 @@
                         <button @onclick="Cmd" class="btn-primary rounded-3">REALIZAR VENDA</button>
                     </div>
                     <div class="col row ms-1">
-                        <button @onclick="Cmd" class="btn-primary rounded-3">ASSOCIAR</button>
+                        <button @onclick="AssociarAssinaturaSat" class="btn-primary rounded-3">ASSOCIAR</button>
                     </div>
                 </div>
 
                 <div class="row mt-4 mx-0">
                     <div class="col row me-1">
-                        <button @onclick="Cmd" class="btn-primary rounded-3">EXTRAIR LOG</button>
+                        <button @onclick="ExtrairLogSat" class="btn-primary rounded-3">EXTRAIR LOG</button>
                     </div>
                     <div class="col row ms-1">
                         @*<button @onclick="Cmd" class="btn-primary rounded-3">IMPRIMIR</button>*@

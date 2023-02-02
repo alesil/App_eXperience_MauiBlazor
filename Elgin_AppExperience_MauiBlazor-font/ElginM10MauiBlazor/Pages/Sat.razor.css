@@ -13,7 +13,10 @@
     .painel-retorno .retorno-sat {
         height: 22.6rem;
         overflow-y: auto;
-        overflow-x: hidden;
-        font-family: monospace;
-        font-size: smaller;
+        overflow-x: auto;
+        font-size: x-small;
     }
+
+        .painel-retorno .retorno-sat .retorno-conteudo {
+            white-space: pre;
+        }
