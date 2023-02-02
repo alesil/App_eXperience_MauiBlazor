@@ -123,7 +123,6 @@ public partial class ImpressoraTexto : ComponentBase
         public bool Negrito { get; set; } = false;
         public bool Sublinhado { get; set; } = false;
         public bool CutPaper { get; set; } = false;
-
     }
 
     private enum EAlinhamento

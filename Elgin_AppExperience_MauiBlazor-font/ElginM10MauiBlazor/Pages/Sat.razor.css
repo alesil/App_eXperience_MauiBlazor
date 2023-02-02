@@ -1,0 +1,19 @@
+﻿.container-fluid > .row {
+    height: 25rem;
+}
+
+.painel-retorno {
+    padding: .5rem;
+    border: 0.15rem;
+    border-radius: 1rem;
+    border-style: solid;
+    border-color: black;
+}
+
+    .painel-retorno .retorno-sat {
+        height: 22.6rem;
+        overflow-y: auto;
+        overflow-x: hidden;
+        font-family: monospace;
+        font-size: smaller;
+    }

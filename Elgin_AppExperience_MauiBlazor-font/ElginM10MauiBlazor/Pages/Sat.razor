@@ -1,3 +1,73 @@
 ﻿@page "/sat"
 
-<h1>SAT</h1>
+<Spinner Mensagem="@_messageSpinner" Visible="_showSpinner" />
+
+<h2 class="mx-3 mt-1 mb-2 fw-bold">SAT</h2>
+
+<div class="container-fluid px-3">
+    <div class="row">
+        <div class="col-6 painel-retorno p-1">
+            <div class="align-self-center fw-bold">RETORNO DO SAT</div>
+            <div class="retorno-sat">
+                <code>@_dados.RetornoSat</code>
+            </div>
+        </div>
+        <div class="col-6 painel-comandos">
+            <EditForm Model="@_dados">
+                <div class="row mt-2">
+                    <InputRadioGroup TValue="ModeloSat" @bind-Value="_dados.Modelo">
+                        <div class="align-self-center fw-bold">MODELO:</div>
+                        <div class="btn-group modelosat" role="group">
+                            <InputRadio Value="ModeloSat.SmartSat" class="btn-check" id="btn-smartsat" />
+                            <label class="btn btn-outline-primary p-1" for="btn-smartsat">SMART SAT</label>
+
+                            <InputRadio Value="ModeloSat.SatGo" class="btn-check" id="btn-satgo" />
+                            <label class="btn btn-outline-primary p-1" for="btn-satgo">SAT GO</label>
+                        </div>
+                    </InputRadioGroup>
+                </div>
+                <div class="row mt-2">
+                    <div class="align-self-center fw-bold">CÓDIGO DE ATIVAÇÃO:</div>
+                    <div class="col"><input id="id-codigo-ativacao" class="form-control" @bind-value="_dados.CodigoAtivacao" type="text" placeholder="Código de Ativação" /></div>
+                </div>
+
+                <div class="row mt-5 mx-0">
+                    <div class="col row me-1">
+                        <button @onclick="Cmd" class="btn-primary rounded-3">CONSULTAR SAT</button>
+                    </div>
+                    <div class="col row ms-1">
+                        <button @onclick="Cmd" class="btn-primary rounded-3">CANCELAMENTO</button>
+                    </div>
+                </div>
+
+                <div class="row mt-4 mx-0">
+                    <div class="col row me-1">
+                        <button @onclick="Cmd" class="btn-primary rounded-3">STATUS OPER.</button>
+                    </div>
+                    <div class="col row ms-1">
+                        <button @onclick="Cmd" class="btn-primary rounded-3">ATIVAR</button>
+                    </div>
+                </div>
+
+                <div class="row mt-4 mx-0">
+                    <div class="col row me-1">
+                        <button @onclick="Cmd" class="btn-primary rounded-3">REALIZAR VENDA</button>
+                    </div>
+                    <div class="col row ms-1">
+                        <button @onclick="Cmd" class="btn-primary rounded-3">ASSOCIAR</button>
+                    </div>
+                </div>
+
+                <div class="row mt-4 mx-0">
+                    <div class="col row me-1">
+                        <button @onclick="Cmd" class="btn-primary rounded-3">EXTRAIR LOG</button>
+                    </div>
+                    <div class="col row ms-1">
+                        @*<button @onclick="Cmd" class="btn-primary rounded-3">IMPRIMIR</button>*@
+                    </div>
+                </div>
+
+            </EditForm>
+        </div>
+    </div>
+</div>

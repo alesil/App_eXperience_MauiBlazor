@@ -6,7 +6,7 @@ namespace ElginM10MauiBlazor.Pages;
 public partial class Barcode : ComponentBase
 {
     private bool _showSpinner = false;
-    private string _messageSpinner = "Aguardande...";
+    private string _messageSpinner = "Aguarde...";
 
     private Dados _dados = new();
 
@@ -22,7 +22,6 @@ public partial class Barcode : ComponentBase
     private async Task IniciarLeitura()
     {
         await LimparCampos();
-        
     }
 
     private async Task LimparCampos()
@@ -67,7 +66,5 @@ public partial class Barcode : ComponentBase
         public string Codigo06 { get; set; }
         public string Codigo07 { get; set; }
         public string Codigo08 { get; set; }
-
-        public string Mensagem { get; set; } = "ELGIN DEVELOPERS COMMUNITY";
     }
 }
