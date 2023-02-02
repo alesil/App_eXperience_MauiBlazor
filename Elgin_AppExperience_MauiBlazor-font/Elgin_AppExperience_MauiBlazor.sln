@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElginM10MauiBlazor", "ElginM10MauiBlazor\ElginM10MauiBlazor.csproj", "{D3C7A7BD-24F7-4D18-906E-0FFD2E161E48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElginM10MauiBlazor", "ElginM10MauiBlazor\ElginM10MauiBlazor.csproj", "{D3C7A7BD-24F7-4D18-906E-0FFD2E161E48}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{8542DCBC-24F1-4ACE-807A-9886E5C9E70C}"
 	ProjectSection(SolutionItems) = preProject
@@ -20,23 +20,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "e1_v02.16.00", "e1_v02.16.0
 		Bibliotecas.aar\e1_v02.16.00\e1-V02.16.00-release.aar = Bibliotecas.aar\e1_v02.16.00\e1-V02.16.00-release.aar
 		Bibliotecas.aar\e1_v02.16.00\InterfaceAutomacao-v2.0.0.12.aar = Bibliotecas.aar\e1_v02.16.00\InterfaceAutomacao-v2.0.0.12.aar
 		Bibliotecas.aar\e1_v02.16.00\minipdvm8-v01.00.00-release.aar = Bibliotecas.aar\e1_v02.16.00\minipdvm8-v01.00.00-release.aar
-		Bibliotecas.aar\e1_v02.16.00\satelgin-8.0.1-release.aar = Bibliotecas.aar\e1_v02.16.00\satelgin-8.0.1-release.aar
+		Bibliotecas.aar\e1_v02.16.00\satelgin-8.1.1-release.aar = Bibliotecas.aar\e1_v02.16.00\satelgin-8.1.1-release.aar
 		Bibliotecas.aar\e1_v02.16.00\scanner-v1.1-release.aar = Bibliotecas.aar\e1_v02.16.00\scanner-v1.1-release.aar
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Bindings AAR (android)", "02 - Bindings AAR (android)", "{455679FA-C697-41A2-AC0C-1A1C325DC8F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E1", "Bindings.aar\E1\E1.csproj", "{1A62D071-39DA-4E37-9E7D-404A5E41503B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E1", "Bindings.aar\E1\E1.csproj", "{1A62D071-39DA-4E37-9E7D-404A5E41503B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceAutomacao", "Bindings.aar\InterfaceAutomacao\InterfaceAutomacao.csproj", "{A4625F03-C1BE-439F-AF64-F332B75BD670}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterfaceAutomacao", "Bindings.aar\InterfaceAutomacao\InterfaceAutomacao.csproj", "{A4625F03-C1BE-439F-AF64-F332B75BD670}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniPdvM8", "Bindings.aar\MiniPdvM8\MiniPdvM8.csproj", "{3529E474-D743-46AF-A1F3-123E58CC0D59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniPdvM8", "Bindings.aar\MiniPdvM8\MiniPdvM8.csproj", "{3529E474-D743-46AF-A1F3-123E58CC0D59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scanner", "Bindings.aar\Scanner\Scanner.csproj", "{9B65FAF6-9BB7-4E3D-B6CB-DB78639627CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scanner", "Bindings.aar\Scanner\Scanner.csproj", "{9B65FAF6-9BB7-4E3D-B6CB-DB78639627CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatElgin", "Bindings.aar\SatElgin\SatElgin.csproj", "{532FD95D-E818-4A86-8265-F060036A940E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SatElgin", "Bindings.aar\SatElgin\SatElgin.csproj", "{532FD95D-E818-4A86-8265-F060036A940E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudPosSdk", "Bindings.aar\CloudPosSdk\CloudPosSdk.csproj", "{65DC0C25-BBE1-4901-951D-A8C14692F7FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudPosSdk", "Bindings.aar\CloudPosSdk\CloudPosSdk.csproj", "{65DC0C25-BBE1-4901-951D-A8C14692F7FE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Bibliotecas DLL (windows)", "04 - Bibliotecas DLL (windows)", "{124075FF-71C9-4C56-93CD-602A1A3151B2}"
 EndProject
