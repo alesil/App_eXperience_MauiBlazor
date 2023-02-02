@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 
+using System.Xml.Linq;
+
 namespace ElginM10MauiBlazor.Pages;
 public partial class Sat : ComponentBase
 {
@@ -28,7 +30,7 @@ public partial class Sat : ComponentBase
     {
         ShowSpinner();
         _dados.RetornoSat = string.Empty;
-        for (int i = 1;i <= 20; i++)
+        for (int i = 1; i <= 20; i++)
         {
             _dados.RetornoSat += $"Testando várias linhas. Linha {i:000}\n";
         }
@@ -39,7 +41,9 @@ public partial class Sat : ComponentBase
     {
         ShowSpinner("Consultando SAT...");
         var retornoSat = await SatService.ConsultarSatAsync(SatService.GerarNumeroSessao());
-        _dados.RetornoSat = string.Join("\n", DecodificarResultadoPadrao(retornoSat));
+        _dados.RetornoSat = retornoSat.Equals("DeviceNotFound", StringComparison.InvariantCultureIgnoreCase)
+            ? "Sat não conectado\nou ocorreu algum problema inesperado."
+            : string.Join("\n", DecodificarResultadoPadrao(retornoSat));
         HideSpinner();
     }
 
@@ -47,7 +51,9 @@ public partial class Sat : ComponentBase
     {
         ShowSpinner("Consultando Status Operacional do SAT...");
         var retornoSat = await SatService.ConsultarStatusOperacionalAsync(SatService.GerarNumeroSessao(), _dados.CodigoAtivacao);
-        _dados.RetornoSat = string.Join("\n", DecodificarStatusOperacional(retornoSat));
+        _dados.RetornoSat = retornoSat.Equals("DeviceNotFound", StringComparison.InvariantCultureIgnoreCase)
+            ? "Sat não conectado\nou ocorreu algum problema inesperado."
+            : string.Join("\n", DecodificarStatusOperacional(retornoSat));
         HideSpinner();
     }
 
@@ -56,7 +62,9 @@ public partial class Sat : ComponentBase
         ShowSpinner("Extraindo logs do SAT...");
         var retornoSat = await SatService.ExtrairLogsAsync(SatService.GerarNumeroSessao(), _dados.CodigoAtivacao);
         ShowSpinner("Decodificando logs do SAT...");
-        _dados.RetornoSat = string.Join("\n", DecodificarLogs(retornoSat));
+        _dados.RetornoSat = retornoSat.Equals("DeviceNotFound", StringComparison.InvariantCultureIgnoreCase)
+            ? "Sat não conectado\nou ocorreu algum problema inesperado."
+            : string.Join("\n", DecodificarLogs(retornoSat));
         HideSpinner();
     }
 
@@ -69,7 +77,25 @@ public partial class Sat : ComponentBase
             _dados.CodigoAtivacao,
             _dados.CnpjEmitente,
             c_uf: 15); // SP
-        _dados.RetornoSat = string.Join("\n", DecodificarResultadoPadrao(retornoSat));
+        _dados.RetornoSat = retornoSat.Equals("DeviceNotFound", StringComparison.InvariantCultureIgnoreCase)
+            ? "Sat não conectado\nou ocorreu algum problema inesperado."
+            : string.Join("\n", DecodificarResultadoPadrao(retornoSat));
+        HideSpinner();
+    }
+
+    private async Task RealizarVenda()
+    {
+        ShowSpinner("Lendo arquivo XML de venda...");
+        var conteudoXml = await CarregarArquivoXml("xmlenviadadosvendasat.xml");
+        ShowSpinner("Enviando XML de venda ao SAT...");
+        var retornoSat = await SatService.EnviarDadosVendaAsync(
+            SatService.GerarNumeroSessao(),
+            _dados.CodigoAtivacao,
+            conteudoXml);
+        ShowSpinner("Decodificando venda realizada...");
+        _dados.RetornoSat = retornoSat.Equals("DeviceNotFound", StringComparison.InvariantCultureIgnoreCase)
+            ? "Sat não conectado\nou ocorreu algum problema inesperado."
+            : string.Join("\n", DecodificarVenda(retornoSat));
         HideSpinner();
     }
 
@@ -81,8 +107,66 @@ public partial class Sat : ComponentBase
             _dados.CodigoAtivacao,
             _dados.CnpjSoftwareHouse,
             _dados.AssinaturaAC);
-        _dados.RetornoSat = string.Join("\n", DecodificarResultadoPadrao(retornoSat));
+        _dados.RetornoSat = retornoSat.Equals("DeviceNotFound", StringComparison.InvariantCultureIgnoreCase)
+            ? "Sat não conectado\nou ocorreu algum problema inesperado."
+            : string.Join("\n", DecodificarResultadoPadrao(retornoSat));
         HideSpinner();
+    }
+
+    private async Task<string> CarregarArquivoXml(string nomeArquivo)
+    {
+        try
+        {
+            using var sourceStream = await FileSystem.OpenAppPackageFileAsync(nomeArquivo);
+            if (sourceStream == null) return null;
+
+            using MemoryStream ms = new();
+            sourceStream.CopyTo(ms);
+            string conteudo = System.Text.Encoding.UTF8.GetString(ms.ToArray());
+            return conteudo;
+        }
+        catch (Exception ex)
+        {
+            await DialogService.DisplayAlert("Erro ao Carregar Arquivo XML", ex.Message, "OK");
+            return null;
+        }
+
+    }
+    private List<string> DecodificarVenda(string dados)
+    {
+        List<string> ret = new();
+        var aDados = dados.Split('|', StringSplitOptions.TrimEntries);
+
+        int pos = 0;
+        ret.Add($"numeroSessao.....: {aDados[pos++]}");
+        ret.Add($"EEEEE............: {aDados[pos++]}");
+        ret.Add($"CCCC.............: {aDados[pos++]}");
+        ret.Add($"mensagem.........: {aDados[pos++]}");
+        ret.Add($"cod..............: {aDados[pos++]}");
+        ret.Add($"mensagemSEFAZ....: {aDados[pos++]}");
+
+        var xmlCFeSatBase64 = aDados[pos++];
+
+        ret.Add($"timeStamp........: {aDados[pos++]}");
+        ret.Add($"chaveConsulta....: {aDados[pos++]}");
+        ret.Add($"valorTotalCFe....: {aDados[pos++]}");
+        ret.Add($"CPFCNPJValue.....: {aDados[pos++]}");
+        ret.Add($"assinaturaQRCODE.: {aDados[pos++]}");
+
+        string xmlCFeSat = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(xmlCFeSatBase64));
+        XDocument doc = XDocument.Parse(xmlCFeSat);
+        string formatedXmlCFeSat = doc.ToString();
+
+        ret.Add(string.Empty);
+        ret.Add("--- CONTEÚDO DO CFe-SAT ---");
+        ret.Add(string.Empty);
+
+
+        ret.Add(formatedXmlCFeSat);
+
+
+
+        return ret;
     }
 
     private List<string> DecodificarResultadoPadrao(string dados)
@@ -98,8 +182,8 @@ public partial class Sat : ComponentBase
         ret.Add($"mensagemSEFAZ....: {aDados[pos++]}");
 
         return ret;
-    }    
-    
+    }
+
     private List<string> DecodificarLogs(string dados)
     {
         List<string> ret = new();
@@ -117,7 +201,7 @@ public partial class Sat : ComponentBase
 
         string logBase64 = aDados[pos++];
         string log = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(logBase64));
-        
+
         ret.Add(log);
 
         return ret;

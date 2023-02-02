@@ -68,7 +68,6 @@ public partial class ImpressoraImagem : ComponentBase
         {
             await DialogService.DisplayAlert("Erro ao Carregar Imagem Padrão", ex.Message, "OK");
         }
-
     }
 
     private async Task CarregarImagem()
@@ -88,7 +87,6 @@ public partial class ImpressoraImagem : ComponentBase
 
                 if (sourceStream != null)
                 {
-                    using MemoryStream ms = new();
                     _dados.ImageStream = new();
                     sourceStream.CopyTo(_dados.ImageStream); // Armazena o stream em _dados
 
