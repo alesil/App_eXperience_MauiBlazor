@@ -104,6 +104,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x64", "x64", "{391A346F-B0F
 		Bibliotecas.dll\SatElgin\SmartSat\x64\dllsat.dll.lib = Bibliotecas.dll\SatElgin\SmartSat\x64\dllsat.dll.lib
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10 - Aplicativo Android (apk)", "10 - Aplicativo Android (apk)", "{5A58FB2E-1DA0-4F1F-B297-C2122CC3E8A7}"
+	ProjectSection(SolutionItems) = preProject
+		..\AplicativoAndroid(apk)\br.com.elgindevelopercommunity.elginm10mauiblazor.apk = ..\AplicativoAndroid(apk)\br.com.elgindevelopercommunity.elginm10mauiblazor.apk
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Keystore", "Keystore", "{F319CE37-B399-4609-B639-1F0BB059C010}"
+	ProjectSection(SolutionItems) = preProject
+		..\AplicativoAndroid(apk)\Keystore\elgin-m10.keystore = ..\AplicativoAndroid(apk)\Keystore\elgin-m10.keystore
+		..\AplicativoAndroid(apk)\Keystore\gerar-assinatura.bat = ..\AplicativoAndroid(apk)\Keystore\gerar-assinatura.bat
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -169,6 +180,7 @@ Global
 		{E5182113-0089-4F6C-8B23-C7980CB1EBDD} = {8EB767B3-F767-464D-9539-3FB9ECC6EBC8}
 		{B3D6B023-9297-4877-969B-125F7E268ABE} = {E5182113-0089-4F6C-8B23-C7980CB1EBDD}
 		{391A346F-B0F3-4C13-ABC5-9800F4B4425C} = {E5182113-0089-4F6C-8B23-C7980CB1EBDD}
+		{F319CE37-B399-4609-B639-1F0BB059C010} = {5A58FB2E-1DA0-4F1F-B297-C2122CC3E8A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ACA3B52A-D5FA-41A0-AF31-F3097EA26AA4}

@@ -28,6 +28,22 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.22621.0</TargetPlatformMinVersion>
 		<Nullable>disable</Nullable>
 		<Platforms>AnyCPU</Platforms>
+		<AndroidSigningKeyStore>elgin-m10.keystore</AndroidSigningKeyStore>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android33.0|AnyCPU'">
+	  <AndroidPackageFormat>apk</AndroidPackageFormat>
+	  <AndroidKeyStore>True</AndroidKeyStore>
+	  <AndroidSigningKeyAlias>key</AndroidSigningKeyAlias>
+	  <AndroidSigningStorePass>Elgin123456</AndroidSigningStorePass>
+	  <AndroidSigningKeyPass>Elgin123456</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android33.0|AnyCPU'">
+	  <AndroidKeyStore>True</AndroidKeyStore>
+	  <AndroidSigningKeyAlias>key</AndroidSigningKeyAlias>
+	  <AndroidSigningStorePass>Elgin123456</AndroidSigningStorePass>
+	  <AndroidSigningKeyPass>Elgin123456</AndroidSigningKeyPass>
 	</PropertyGroup>
 
 	<ItemGroup>
