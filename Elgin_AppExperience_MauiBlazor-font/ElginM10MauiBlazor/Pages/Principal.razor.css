@@ -85,3 +85,12 @@
                 font-weight: bold;
                 cursor: pointer;
             }
+
+    .principal .desativado {
+        pointer-events: none;
+    }
+
+        .principal .desativado > .botao {
+            color: lightgray;
+            text-decoration: line-through;
+        }

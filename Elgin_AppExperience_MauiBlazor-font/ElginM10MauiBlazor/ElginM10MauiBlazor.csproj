@@ -49,7 +49,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Remove="wwwroot\fontawesome-free-6.2.1-web\LICENSE.txt" />
+		<Content Remove="wwwroot\fontawesome-free-6.2.1-web\LICENSE.txt" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -79,7 +79,7 @@
 	<!-- ************************************************************************************************************************** -->
 	<!--                                       CONFIGURAÇÃO MULTI-PLATAFORMA                                                        -->
 	<!-- ************************************************************************************************************************** -->
-	
+
 	<!-- Referências de bibliotecas Android (normalmente projetos gerados a partir de bibliotecas .aar -->
 	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
 		<ProjectReference Include="..\Bindings.aar\CloudPosSdk\CloudPosSdk.csproj" />
@@ -89,13 +89,16 @@
 		<ProjectReference Include="..\Bindings.aar\SatElgin\SatElgin.csproj" />
 		<ProjectReference Include="..\Bindings.aar\Scanner\Scanner.csproj" />
 	</ItemGroup>
-	
+
 	<!-- Referências de DLLs Windows -->
 	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">
 		<None Update="Platforms\Windows\Library\E1_Bridge01.dll">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 		<None Update="Platforms\Windows\Library\E1_Impressora01.dll">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Platforms\Windows\Library\dllsat.dll">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
@@ -106,7 +109,7 @@
 	<!-- São aceitos arquivos com a extensão intermediário no nome da plataforma ou abaixo da pasta com o nome da plataforma -->
 	<!-- Referência: https://learn.microsoft.com/pt-br/dotnet/maui/platform-integration/configure-multi-targeting?view=net-maui-7.0 -->
 	<!-- ************************************************************************************************************************** -->
-	
+
 	<!-- Android -->
 	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) != 'android'">
 		<Compile Remove="**\**\*.Android.cs" />
@@ -123,28 +126,23 @@
 		<None Include="**\Windows\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Data\" />
+		<Folder Include="Data\" />
 	</ItemGroup>
 	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0-android33.0'">
-	  <PackageReference Include="Xamarin.Google.ZXing.Core">
-	    <Version>3.5.1</Version>
-	  </PackageReference>
+		<PackageReference Include="Xamarin.Google.ZXing.Core">
+			<Version>3.5.1</Version>
+		</PackageReference>
 	</ItemGroup>
 	<ItemGroup>
-	  <None Include="wwwroot\fontawesome-free-6.2.1-web\LICENSE.txt" />
-	  <None Include="wwwroot\fontawesome-free-6.2.1-web\webfonts\fa-regular-400.woff2" />
-	  <None Include="wwwroot\fontawesome-free-6.2.1-web\webfonts\fa-solid-900.woff2" />
+		<None Include="wwwroot\fontawesome-free-6.2.1-web\LICENSE.txt" />
+		<None Include="wwwroot\fontawesome-free-6.2.1-web\webfonts\fa-regular-400.woff2" />
+		<None Include="wwwroot\fontawesome-free-6.2.1-web\webfonts\fa-solid-900.woff2" />
 	</ItemGroup>
 	<ItemGroup>
-	  <MauiAsset Update="Resources\Raw\elgin_logo_default_print_image.png">
-	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-	  </MauiAsset>
-	</ItemGroup>
-	<ItemGroup>
-	  <None Update="Platforms\Windows\Library\dllsat.dll">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
+		<MauiAsset Update="Resources\Raw\elgin_logo_default_print_image.png">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</MauiAsset>
 	</ItemGroup>
 
 </Project>
