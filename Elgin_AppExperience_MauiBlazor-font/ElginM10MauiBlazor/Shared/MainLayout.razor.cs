@@ -1,9 +1,9 @@
 ﻿namespace ElginM10MauiBlazor.Shared;
 public partial class MainLayout
 {
-        private static bool KioskMode { get; set; } = false;
+    private static bool KioskMode { get; set; } = false;
 
-    private void ToggleKioskMode()
+    private async Task ToggleKioskMode()
     {
         if (DeviceInfo.Current.Platform != DevicePlatform.Android)
         {
@@ -14,15 +14,15 @@ public partial class MainLayout
 
         if (KioskMode)
         {
-            KioskService.DesabilitaBarraStatus();
-            KioskService.DesabilitaBarraNavegacao();
-            KioskService.DesabilitaBotaoPower();
+            await KioskService.DesabilitaBarraStatusAsync();
+            await KioskService.DesabilitaBarraNavegacaoAsync();
+            await KioskService.DesabilitaBotaoPowerAsync();
         }
         else
         {
-            KioskService.HabilitaBarraNavegacao();
-            KioskService.HabilitaBarraStatus();
-            KioskService.HabilitaBotaoPower();
+            await KioskService.HabilitaBarraNavegacaoAsync();
+            await KioskService.HabilitaBarraStatusAsync();
+            await KioskService.HabilitaBotaoPowerAsync();
         }
     }
 }

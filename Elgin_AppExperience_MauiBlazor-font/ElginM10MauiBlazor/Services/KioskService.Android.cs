@@ -11,10 +11,10 @@ internal partial class KioskService
         _utils = new Utils(ctx);
     }
 
-    public partial void HabilitaBarraStatus() => _utils.HabilitaBarraStatus();
-    public partial void DesabilitaBarraStatus() => _utils.DesabilitaBarraStatus();
-    public partial void HabilitaBarraNavegacao() => _utils.HabilitaBarraNavegacao();
-    public partial void DesabilitaBarraNavegacao() => _utils.DesabilitaBarraNavegacao();
-    public partial void HabilitaBotaoPower() => _utils.HabilitaBotaoPower();
-    public partial void DesabilitaBotaoPower() => _utils.DesabilitaBotaoPower();
+    internal partial void HabilitaBarraStatus() => _utils.HabilitaBarraStatus();
+    internal partial void DesabilitaBarraStatus() => _utils.DesabilitaBarraStatus();
+    internal partial void HabilitaBarraNavegacao() => _utils.HabilitaBarraNavegacao();
+    internal partial void DesabilitaBarraNavegacao() => _utils.DesabilitaBarraNavegacao();
+    internal partial void HabilitaBotaoPower() => _utils.HabilitaBotaoPower();
+    internal partial void DesabilitaBotaoPower() => _utils.DesabilitaBotaoPower();
 }
