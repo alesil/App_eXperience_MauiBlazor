@@ -6,7 +6,7 @@ namespace ElginM10MauiBlazor.Pages;
 public partial class Sat : ComponentBase
 {
     [Inject]
-    Services.SatService SatService { get; set; }
+    Services.E1SatService SatService { get; set; }
 
     private readonly Dados _dados = new();
 
