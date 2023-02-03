@@ -86,16 +86,39 @@ public partial class Sat : ComponentBase
     private async Task RealizarVenda()
     {
         ShowSpinner("Lendo arquivo XML de venda...");
-        var conteudoXml = await CarregarArquivoXml("xmlenviadadosvendasat.xml");
+        var conteudoXml = await CarregarArquivoXml($"xmlvenda-{_dados.Modelo.ToString().ToLowerInvariant()}.xml");
+
         ShowSpinner("Enviando XML de venda ao SAT...");
         var retornoSat = await SatService.EnviarDadosVendaAsync(
             SatService.GerarNumeroSessao(),
             _dados.CodigoAtivacao,
             conteudoXml);
+
         ShowSpinner("Decodificando venda realizada...");
         _dados.RetornoSat = retornoSat.Equals("DeviceNotFound", StringComparison.InvariantCultureIgnoreCase)
             ? "Sat não conectado\nou ocorreu algum problema inesperado."
             : string.Join("\n", DecodificarVenda(retornoSat));
+        HideSpinner();
+    }
+
+    private async Task CancelarVenda()
+    {
+        ShowSpinner("Lendo arquivo XML de cancelamento...");
+        var conteudoXml = await CarregarArquivoXml($"xmlcancelamento-{_dados.Modelo.ToString().ToLowerInvariant()}.xml");
+        // troca no conteúdo do arquivo xml pela chave da última venda
+        conteudoXml = conteudoXml.Replace("chave-cfe-sat", _dados.ChaveUltimaVenda);
+
+        ShowSpinner("Enviando XML de cancelamento ao SAT...");
+        var retornoSat = await SatService.CancelarUltimaVendaAsync(
+            SatService.GerarNumeroSessao(),
+            _dados.CodigoAtivacao,
+            _dados.ChaveUltimaVenda,
+            conteudoXml);
+
+        ShowSpinner("Decodificando cancelamento realizado...");
+        _dados.RetornoSat = retornoSat.Equals("DeviceNotFound", StringComparison.InvariantCultureIgnoreCase)
+            ? "Sat não conectado\nou ocorreu algum problema inesperado."
+            : string.Join("\n", DecodificarCancelamento(retornoSat));
         HideSpinner();
     }
 
@@ -132,6 +155,7 @@ public partial class Sat : ComponentBase
         }
 
     }
+
     private List<string> DecodificarVenda(string dados)
     {
         List<string> ret = new();
@@ -144,6 +168,48 @@ public partial class Sat : ComponentBase
         ret.Add($"mensagem.........: {aDados[pos++]}");
         ret.Add($"cod..............: {aDados[pos++]}");
         ret.Add($"mensagemSEFAZ....: {aDados[pos++]}");
+        ret.Add(string.Empty);
+
+        if (aDados.Length <= 6) return ret;
+
+        var xmlCFeSatBase64 = aDados[pos++];
+
+        ret.Add($"timeStamp........: {aDados[pos++]}");
+
+        _dados.ChaveUltimaVenda = aDados[pos++];
+        ret.Add($"chaveConsulta....: {_dados.ChaveUltimaVenda}");
+        ret.Add($"valorTotalCFe....: {aDados[pos++]}");
+        ret.Add($"CPFCNPJValue.....: {aDados[pos++]}");
+        ret.Add($"assinaturaQRCODE.: {aDados[pos++]}");
+
+        string xmlCFeSat = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(xmlCFeSatBase64));
+        XDocument doc = XDocument.Parse(xmlCFeSat);
+        string formatedXmlCFeSat = doc.ToString();
+
+        ret.Add(string.Empty);
+        ret.Add("--- CONTEÚDO DO CFe-SAT ---");
+        ret.Add(string.Empty);
+
+        ret.Add(formatedXmlCFeSat);
+
+        return ret;
+    }
+
+    private List<string> DecodificarCancelamento(string dados)
+    {
+        List<string> ret = new();
+        var aDados = dados.Split('|', StringSplitOptions.TrimEntries);
+
+        int pos = 0;
+        ret.Add($"numeroSessao.....: {aDados[pos++]}");
+        ret.Add($"EEEEE............: {aDados[pos++]}");
+        ret.Add($"CCCC.............: {aDados[pos++]}");
+        ret.Add($"mensagem.........: {aDados[pos++]}");
+        ret.Add($"cod..............: {aDados[pos++]}");
+        ret.Add($"mensagemSEFAZ....: {aDados[pos++]}");
+        ret.Add(string.Empty);
+
+        if (aDados.Length <= 6) return ret;
 
         var xmlCFeSatBase64 = aDados[pos++];
 
@@ -158,16 +224,14 @@ public partial class Sat : ComponentBase
         string formatedXmlCFeSat = doc.ToString();
 
         ret.Add(string.Empty);
-        ret.Add("--- CONTEÚDO DO CFe-SAT ---");
+        ret.Add("--- CONTEÚDO DO CFe-SAT DE CANCELAMENTO ---");
         ret.Add(string.Empty);
-
 
         ret.Add(formatedXmlCFeSat);
 
-
-
         return ret;
     }
+
 
     private List<string> DecodificarResultadoPadrao(string dados)
     {
@@ -266,6 +330,7 @@ public partial class Sat : ComponentBase
         public string CnpjSoftwareHouse { get; set; } = "16716114000172"; // Sat Homologação da Elgin
         public string CnpjEmitente { get; set; } = "14200166000166"; // Sat Homologação da Elgin
         public string AssinaturaAC { get; set; } = "SGR-SAT SISTEMA DE GESTAO E RETAGUARDA DO SAT";
+        public string ChaveUltimaVenda { get; set; } = string.Empty;
     }
 
     private enum ModeloSat

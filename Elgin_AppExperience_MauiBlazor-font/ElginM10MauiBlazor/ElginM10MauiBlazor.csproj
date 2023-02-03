@@ -52,13 +52,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Remove="Resources\Raw\cancelamentosatgo.xml" />
 		<None Remove="Resources\Raw\elgin_logo_default_print_image.png" />
-		<None Remove="Resources\Raw\satgo3.xml" />
-		<None Remove="Resources\Raw\xmlcancelarultimavendasat.xml" />
-		<None Remove="Resources\Raw\xmlenviadadosvendasat.xml" />
+		<None Remove="Resources\Raw\xmlcancelamento-satgo.xml" />
+		<None Remove="Resources\Raw\xmlcancelamento-smartsat.xml" />
 		<None Remove="Resources\Raw\xmlnfce.xml" />
 		<None Remove="Resources\Raw\xmlsat.xml" />
+		<None Remove="Resources\Raw\xmlvenda-satgo.xml" />
+		<None Remove="Resources\Raw\xmlvenda-smartsat.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
