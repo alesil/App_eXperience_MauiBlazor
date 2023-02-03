@@ -6,7 +6,7 @@ namespace ElginM10MauiBlazor.Pages;
 public partial class Sat : ComponentBase
 {
     [Inject]
-    Services.E1SatService SatService { get; set; }
+    Services.SatService SatService { get; set; }
 
     private readonly Dados _dados = new();
 
@@ -24,17 +24,6 @@ public partial class Sat : ComponentBase
     {
         _showSpinner = false;
         StateHasChanged();
-    }
-
-    private void Cmd()
-    {
-        ShowSpinner();
-        _dados.RetornoSat = string.Empty;
-        for (int i = 1; i <= 20; i++)
-        {
-            _dados.RetornoSat += $"Testando várias linhas. Linha {i:000}\n";
-        }
-        HideSpinner();
     }
 
     private async Task ConsultarSat()
