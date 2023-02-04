@@ -115,6 +115,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Keystore", "Keystore", "{F3
 		..\AplicativoAndroid(apk)\Keystore\gerar-assinatura.bat = ..\AplicativoAndroid(apk)\Keystore\gerar-assinatura.bat
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "11 - Aplicativo Windows (msix)", "11 - Aplicativo Windows (msix)", "{A3749461-6FB2-48AF-BA40-438154E47798}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
